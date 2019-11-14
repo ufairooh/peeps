@@ -101,6 +101,7 @@ private $nav_links = array("Home" => "index.php", "Reservation" => "reserve.php"
         $this->renderMasthead($this->page_title, $this->page_subtitle, $this->image_link);
 
         $this->renderContent($this->content);
+		
         ?>
         </body>
         </html>
@@ -174,16 +175,18 @@ private $nav_links = array("Home" => "index.php", "Reservation" => "reserve.php"
     }
 
     public function renderContent($content){
-        foreach ($content as $title => $value) {
             ?>
-            <section class="py-5">
+            <section class="page--wrapper pt--80 pb--20">
                 <div class="container">
-                    <h2 class="font-weight-light"><?=$title?></h2>
-                    <p><?=$value?></p>
+				<div class="row">
+                    <?=$content?>
+					</div>
                 </div>
             </section>
             <?php
-        }
+        
     }
+	
+	
 }
 ?>
