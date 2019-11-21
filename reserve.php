@@ -11,12 +11,28 @@ $homepage -> setContent(
                         <div class='main--content-inner drop--shadow'>
 						<form action='action.php' method='post'>
                                 <div class='row gutter--20'>
-                                    
+                                    <div class='col-xs-12'>
+                                        <div class='form-group'>
+                                            <input type='text' name='subject' placeholder='Subject *' class='form-control' required>
+                                        </div>
+                                    </div>
+									<div class='col-xs-12'>
+                                        <div class='form-group'>
+                                            <input type='number' name='jumlah' placeholder='Jumlah Anggota (hanya angka) *' class='form-control' required>
+                                        </div>
+                                    </div>
 
                                     <div class='col-xs-12'>
                                         <div class='form-group'>
                                             <textarea name='message' placeholder='Message *' class='form-control' required></textarea>
-                                        </div>
+                                        
+										<div class='image-upload'>
+										<label for='file-input'>
+											<img src='pic.png' height='24px' width='24px'/>
+										</label>
+										<input id='file-input' type='file'/>
+									</div>
+									</div>
                                     </div>
 
                                     <div class='col-xs-12'>

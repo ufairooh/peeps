@@ -5764,3 +5764,7 @@ body.isScrolling #backToTop {
     color: #fff;
     background-color: #1da1f2;
 }
+
+.image-upload > input{
+	display: none;
+}
