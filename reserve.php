@@ -58,7 +58,7 @@ $homepage -> setContent(
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <h4 class='h6 fw--500 text-darkest'><a href='sub-forums.html' class='btn-link'>User Interface Design</a></h4>
+                                                <h4 class='h6 fw--500 text-darkest'><a href='post-detail.php' class='btn-link'>User Interface Design</a></h4>
 
                                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry standard dummy text.</p>
                                             </td>

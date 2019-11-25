@@ -94,6 +94,8 @@ private $nav_links = array("Home" => "index.php", "Reservation" => "reserve.php"
 			<link rel="stylesheet" href="css/responsive-style.css">
 			<link rel="stylesheet" href="css/colors/color-1.css" id="changeColorScheme">
 			<link rel="stylesheet" href="css/custom.css">
+
+
         <body>
         <?php
         $this->renderMenu($this->nav_links);
@@ -180,7 +182,11 @@ private $nav_links = array("Home" => "index.php", "Reservation" => "reserve.php"
                 <div class="container">
 				<div class="row">
                     <?=$content?>
-					</div>
+
+
+
+
+				</div>
                 </div>
             </section>
             <?php
