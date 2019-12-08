@@ -63,53 +63,51 @@ $homepage -> setContent("<!-- Main Content Start -->
                     <div class='container-fluid'>
                         <div class='row'>
                             <div class='col-md-12'>
-                                <!-- DATA TABLE -->
-                                <h3 class='title-5 m-b-35'>Post Data</h3>
-                                <div class='table-data__tool'>
-                                    <div class='table-data__tool-right'>
-                                        <a href='post_admin.php'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
-                                            <i class='zmdi zmdi-plus'></i>Input new post</button>  </a>                                      
+                                <div class='card'>
+                                    <div class='card-header'>
+                                        <strong>Post</strong>
                                     </div>
-                                </div>
-                                <div class='table-responsive m-b-40'>
-                                    <table class='table table-data3'>
-                                        <thead>
-                                            <tr>
-                                                <th>no</th>
-                                                <th>author</th>
-                                                <th>post</th>
-                                                <th>member/s</th>
-                                                <th>comment detail/s</th>
-                                                <th>date created</th>
-                                                <th>date updated</th>
-                                                <th>action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                                <td><div class='table-data-feature'>
-                                                        <button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>
-                                                            <i class='zmdi zmdi-edit'></i>
-                                                        </button>
-                                                        <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                                            <i class='zmdi zmdi-delete'></i>
-                                                        </button>
-                                                    </div></td>
+                                    <div class='card-body card-block'>
+                                        <form action='' method='post' enctype='multipart/form-data' class='form-horizontal'>
+                                            <div class='row form-group'>
+                                                <div class='col col-md-3'>
+                                                    <label for='text-input' class=' form-control-label'>Subject</label>
+                                                </div>
+                                                <div class='col-12 col-md-9'>
+                                                    <input type='text' id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''/>
+                                                </div>
+                                            </div>
+                                            <div class='row form-group'>
+                                                <div class='col col-md-3'>
+                                                    <label for='text-input' class=' form-control-label'>Number of Member</label>
+                                                </div>
+                                                <div class='col-12 col-md-9'>
+                                                    <input type='text' id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''/>
+                                                </div>
+                                            </div>
+                                            <div class='row form-group'>
+                                                <div class='col col-md-3'>
+                                                    <label for='text-input' class=' form-control-label'>Message</label>
+                                                </div>
+                                                <div class='col-12 col-md-9'>
+                                                    <textarea id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''></textarea>
+                                                </div>
+                                            </div>
+                                            
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    </div>
+                                    <div class='card-footer'>
+                                        <input class ='btn btn-primary btn-sm' type='submit' value='Post' required=''>
+                                        <a href='table_post.php'><button type='button' class='btn btn-secondary btn-sm'>
+                                             Back
+                                        </button></a>
+                                    </div>
+                                                                            </form>
+
                                 </div>
-                                <!-- END DATA TABLE -->
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
