@@ -2,27 +2,29 @@
 
 include "Connection.php";
 
-class DataOperation extends Database{
-	public function insert_record($table,$fields){
-		$sql = "";
-		$sql .= "INSERT INTO ".$table;
-		$sql .= " (".implode(",", array_keys($fields)).") VALUES";
-		$sql .= "('".implode("','", array_values($fields))."')";
-		$query = mysqli_query($this->con,$sql);
-		if($query){
-			return true;
-		}
-	}
+
+if(isset($_POST['submit'])){
+	$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+	//$image = base64_encode($image);
+	$judul = $_POST['subject'];
+	$member = $_POST['jumlah'];
+	$deskripsi = $_POST['message'];
+	$id_user = $_POST['user'];
+	
+	$sql = "INSERT INTO post (judul, member, deskripsi, gambar, tanggal, id_user) VALUE ('$judul', '$member', '$deskripsi', '$image', now(), '$id_user')";
+	$query = mysqli_query($db, $sql);
 }
 
-$obj = new DataOperation;
-if(isset($_POST["submit"])){
-	$myArray = array(
-	"message" => $_POST["message"]
-	);
-	if($obj->insert_record("post",$myArray)){
-		header("location:reserve.php?msg=Record Inserted");
-	}
-	
-}
+function getPost(){
+	$server = "localhost";
+$user = "root";
+$password = "";
+$nama_database = "db";
+
+$db = mysqli_connect($server, $user, $password, $nama_database);
+        $sql2 = "SELECT * FROM post";
+        $result = mysqli_query($db, $sql2);
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    }
 ?>

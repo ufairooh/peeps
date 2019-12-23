@@ -1,11 +1,15 @@
+
 <?php
 
-class Database{
-	public $con;
-	public function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "root", "sosmed");
-		
-	}
+$server = "localhost";
+$user = "root";
+$password = "";
+$nama_database = "db";
+
+$db = mysqli_connect($server, $user, $password, $nama_database);
+
+if( !$db ){
+    die("Gagal terhubung dengan database: " . mysqli_connect_error());
 }
 
 ?>

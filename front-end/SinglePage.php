@@ -3,6 +3,8 @@
 
 class SinglePage
 {
+
+private $user;
 private $content;
 private $page_title;
 private $page_subtitle;
@@ -13,7 +15,20 @@ private $nav_links = array("Home" => "home.php", "Hobies" => "hobies.php");
     /**
      * @return mixed
      */
-    public function getContent()
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $content
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+	
+	public function getContent()
     {
         return $this->content;
     }
@@ -79,8 +94,7 @@ private $nav_links = array("Home" => "home.php", "Hobies" => "hobies.php");
         $this -> $name = $value;
     }
 
-    public function renderAll(){
-        ?>
+    public function renderAll(){?>
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -94,13 +108,17 @@ private $nav_links = array("Home" => "home.php", "Hobies" => "hobies.php");
 			<link rel="stylesheet" href="css/responsive-style.css">
 			<link rel="stylesheet" href="css/colors/color-1.css" id="changeColorScheme">
 			<link rel="stylesheet" href="css/custom.css">
+			<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+			<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+			<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
 
 
         <body>
         <?php
         $this->renderMenu($this->nav_links);
 
-        $this->renderMasthead($this->page_title, $this->page_subtitle, $this->image_link);
+        $this->renderMasthead($this->page_title, $this->page_subtitle, $this->image_link, $this->user);
 
         $this->renderContent($this->content);
 		
@@ -166,7 +184,7 @@ private $nav_links = array("Home" => "home.php", "Hobies" => "hobies.php");
         return strpos($_SERVER['PHP_SELF'], $url) ? "active" : "not-active";
     }
 
-    public function renderMasthead($page_title, $page_subtitle, $image){
+    public function renderMasthead($page_title, $page_subtitle, $image, $user){
         ?>
 		<div class="page--header pt--60 pb--60 text-center" style="background-image: url('<?=$image?>');" data-overlay="0.85">
             <div class="container">
