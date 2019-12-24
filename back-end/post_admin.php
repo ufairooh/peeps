@@ -1,7 +1,10 @@
 <?php
 require ('SinglePage.php');
-
+include('action.php');
+$post = getPost();
 $homepage = new SinglePage();
+$user = "1";
+//$homepage -> setUser($user);
 $homepage -> setImageLink("https://www.thelocal.de/userdata/images/article/ae56fc05831d6ab26b82dc0840dab79182b8c0e70b44416c7228e4f9c8f45931.jpg");
 $homepage -> setPageTitle("Ticket Reservation");
 $homepage -> setPageSubtitle("Buy Ticket for Europe Trips!");
@@ -68,13 +71,14 @@ $homepage -> setContent("<!-- Main Content Start -->
                                         <strong>Post</strong>
                                     </div>
                                     <div class='card-body card-block'>
-                                        <form action='' method='post' enctype='multipart/form-data' class='form-horizontal'>
+                                        <form action='action.php' method='post' enctype='multipart/form-data' class='form-horizontal'>
+										<input type='text' name='user' placeholder='Subject *' class='form-control' value='$user' required>
                                             <div class='row form-group'>
                                                 <div class='col col-md-3'>
                                                     <label for='text-input' class=' form-control-label'>Subject</label>
                                                 </div>
                                                 <div class='col-12 col-md-9'>
-                                                    <input type='text' id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''/>
+                                                    <input type='text' id='text-input' name='subject' placeholder='Subject' class='form-control' required=''/>
                                                 </div>
                                             </div>
                                             <div class='row form-group'>
@@ -82,7 +86,7 @@ $homepage -> setContent("<!-- Main Content Start -->
                                                     <label for='text-input' class=' form-control-label'>Number of Member</label>
                                                 </div>
                                                 <div class='col-12 col-md-9'>
-                                                    <input type='text' id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''/>
+                                                    <input type='number' name='jumlah' onkeypress='return Angkasaja(event)' placeholder='Jumlah Anggota (hanya angka) *' id='text-input' class='form-control' required=''/>
                                                 </div>
                                             </div>
                                             <div class='row form-group'>
@@ -90,14 +94,22 @@ $homepage -> setContent("<!-- Main Content Start -->
                                                     <label for='text-input' class=' form-control-label'>Message</label>
                                                 </div>
                                                 <div class='col-12 col-md-9'>
-                                                    <textarea id='text-input' name='text-input' placeholder='Ketik disini' class='form-control' required=''></textarea>
+                                                    <textarea id='text-input' name='message' placeholder='Message' class='form-control' required=''></textarea>
                                                 </div>
                                             </div>
-                                            
+                                            <div class='row form-group'>
+                                                <div class='col col-md-3'>
+                                                    <label for='text-input' class=' form-control-label'>Image</label>
+                                                </div>
+                                                <div class='col-12 col-md-9'>
+                                                    <input name='image' id='file-input' type='file' onchange='readURL(this);' required/>
+													<br><img id='blah'/>
+                                                </div>
+                                            </div>
 
                                     </div>
                                     <div class='card-footer'>
-                                        <input class ='btn btn-primary btn-sm' type='submit' value='Post' required=''>
+                                        <input class ='btn btn-primary btn-sm' name='submit' type='submit' value='Post' required=''>
                                         <a href='table_post.php'><button type='button' class='btn btn-secondary btn-sm'>
                                              Back
                                         </button></a>
@@ -112,5 +124,27 @@ $homepage -> setContent("<!-- Main Content Start -->
                 </div>
             </div>
     </div>
+	<script type='text/javascript'>
+					function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(500)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+		function Angkasaja(evt){
+			var charCode = (evt.which) ? evt.which : event.keyCode
+			if (charCode > 31 && (charCode < 48 || charCode > 57))
+			return false;
+			return true;
+		}
+	</script>
 ");
 $homepage -> renderAll();
