@@ -1,10 +1,15 @@
 <?php
 require ('SinglePage.php');
-
+include('action.php');
+$post = getPost();
 $homepage = new SinglePage();
+$user = "1";
+$homepage -> setUser($user);
 $homepage -> setImageLink("https://www.thelocal.de/userdata/images/article/ae56fc05831d6ab26b82dc0840dab79182b8c0e70b44416c7228e4f9c8f45931.jpg");
+$homepage -> setPageTitle("Ticket Reservation");
 $homepage -> setPageSubtitle("Buy Ticket for Europe Trips!");
-$homepage -> setContent("<!-- Main Content Start -->
+$homepage -> setContent("
+    <!-- Main Content Start -->
                     <div class='main--content col-md-8 pb--30' data-trigger='stickyScroll'>
                         <div class='main--content-inner'>
                             <!-- Post Item Start -->

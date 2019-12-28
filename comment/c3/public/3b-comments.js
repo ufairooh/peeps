@@ -30,7 +30,7 @@ var comments = {
     comments.ajax({
       data: {
         req: "show",
-        post_id: document.getElementById("post_id").value = 
+        post_id: document.getElementById("post_id").value
       },
       load: function (res) {
         document.getElementById("comments").innerHTML = res;

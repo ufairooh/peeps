@@ -1,0 +1,57 @@
+/* [COMMENTS] */
+.ccomment {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+}
+.ccomment.creply {
+  margin-left: 40px;
+}
+.cname {
+  color: #6396DE;
+  font-weight: bold;
+}
+.ctime::before {
+  display: inline-block;
+  content: "-";
+  margin: 0 5px;
+}
+.ctime {
+  color: #aaa;
+  font-size: 0.9em;
+}
+.cmessage {
+  color: #333;
+  margin-top: 10px;
+}
+
+/* [REPLY FORM] */
+.creplyform {
+  background: #f2f2f2;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+}
+.creplyform h1 {
+  font-size: 1.3em;
+}
+.creplyform input[type=text], .creplyform textarea{
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+}
+.cbutton{
+  background: #db4104;
+  border: 0;
+  color: #fff;
+  padding: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* [DOES NOT MATTER] */
+html, body, input, textarea {
+  font-family: arial, sans-serif;
+}

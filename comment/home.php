@@ -12,7 +12,10 @@
     <p>This should be your blog post, product page, or whichever that you want to add comments.</p>
 
     <!-- GIVE YOUR PAGE OR PRODUCT A POST ID -->
-    <input type="hidden" id="post_id" value="1"/>
+    <div id="post_id" value="1">
+        
+
+    </div>
 
     <!-- CREATE A CONTAINER TO LOAD COMMENTS -->
     <div id="comments"></div>
