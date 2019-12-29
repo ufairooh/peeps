@@ -1,7 +1,7 @@
 <?php
 require_once ("db.php");
 
-$sql = "SELECT * FROM tbl_comment ORDER BY parent_comment_id asc, comment_id asc";
+$sql = "SELECT* FROM post AS p JOIN tbl_comment AS c ON p.id_post=c.id_post";
 
 $result = mysqli_query($conn, $sql);
 $record_set = array();

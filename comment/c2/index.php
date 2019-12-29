@@ -87,9 +87,9 @@ span.posted-by {
     <div class="comment-form-container">
         <form id="frm-comment">
             <div class="input-row">
-                <input type="hidden" name="comment_id" id="commentId"
-                    placeholder="Name" /> <input class="input-field"
-                    type="text" name="name" id="name" placeholder="Name" />
+                <input type="hidden" name="comment_id" id="commentId" placeholder="Name" /> 
+                <input type="hidden" name="id_post" id="postId" value="2" />
+                <input class="input-field" type="text" name="name" id="name" placeholder="Name" />
             </div>
             <div class="input-row">
                 <textarea class="input-field" type="text" name="comment"
@@ -104,8 +104,9 @@ span.posted-by {
     </div>
     <div id="output"></div>
     <script>
-            function postReply(commentId) {
+            function postReply(commentId, postId) {
                 $('#commentId').val(commentId);
+                $('#postId').val(postId);
                 $("#name").focus();
             }
 
@@ -126,6 +127,7 @@ span.posted-by {
                             $("#name").val("");
                             $("#comment").val("");
                             $("#commentId").val("");
+                            $("#postId").val("");
                      	   listComment();
                         } else
                         {
@@ -143,7 +145,7 @@ span.posted-by {
             function listComment() {
                 $.post("comment-list.php",
                         function (data) {
-                               var data = JSON.parse(data);
+                            var data = JSON.parse(data);
                             
                             var comments = "";
                             var replies = "";
@@ -156,6 +158,7 @@ span.posted-by {
 
                             for (var i = 0; (i < data.length); i++)
                             {
+                                var postId = data[i]['id_post'];
                                 var commentId = data[i]['comment_id'];
                                 parent = data[i]['parent_comment_id'];
 
