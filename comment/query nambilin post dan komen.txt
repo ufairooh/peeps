@@ -1,1 +1,0 @@
-SELECT p.post_id,p.judul,c.name, c.message FROM post AS p JOIN comments AS c ON p.post_id=c.post_id
