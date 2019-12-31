@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
-header('location:../account.php');
+header('location:page/account.php');
 }
 
 $id_user=$_SESSION['id'];
