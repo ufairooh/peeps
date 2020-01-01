@@ -34,7 +34,6 @@ require "header.php";
                         echo "<h4 class='h6 fw--500 text-darkest'>".$row['judul']."</h4>";
                         echo"<p>".$row['deskripsi']."</p>";
                         echo "Posted By ".$row['username']." ";
-                        
             		?>
                 </td>
                 <td>
