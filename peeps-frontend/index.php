@@ -1,12 +1,15 @@
 <?php
 require 'connect.php';
-
-//session_start();
-//if($_SESSION['nama_admin']=='')
-//{
-  //  header("location:./login.php");
-//}
 ?>
+<!-- session Azka -->
+<?php 
+include 'db.php';
+
+if ($_SESSION['id'] == false ){
+    header('location:loginuser.php');
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +27,8 @@ require 'connect.php';
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
-
-
 <body>
+
     <header class="header--section style--1">
         <?php include "nav.php"; ?>
     </header>
@@ -36,6 +38,9 @@ require 'connect.php';
             <div class="title">
                 <h2 class="h1 text-white">peeps for finding a new friend with the same hoby</h2>
             </div>
+           <a href="home.php">logout ini bisa tapi dilempar kehalaman yang lain dulu yg ada tombol logoutnya</a>
+           <p>anehnya tombol logout di home.php berfungsi tapi yang di navbar kagak</p>
+           <p>oya buat session ngeidentifikasi dbnya pake file db.php, soalnya kalo kodingannya digabung sama connect.php sessionnya gak bisa</p>
         </div>
     </div>
     <div id="main-body">

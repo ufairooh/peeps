@@ -41,6 +41,17 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                             <?php 
+                                $db->logout();
+                            ?>
+                                <a name="btnLogout" class="btn-link">
+                                <i class="fa mr--8 fa-user-o"></i>
+                                <span>
+                                Logout
+                                </span>
+                                </a>
+                            </li>
                         </ul>
                         <!-- Header Nav Links End -->
                     </div>
