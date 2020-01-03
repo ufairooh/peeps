@@ -1,7 +1,14 @@
 <?php
 require "header.php";
 ?>
-<div class='main--content col-md-8 pb--60' data-trigger='stickyScroll'>
+<div class='main--content' data-trigger='stickyScroll'>
+    <!-- Section Title Start -->
+    <div class="section--title text-center" style="margin-top: 0">
+        <div class="title lined">
+            <h2 class="h2">Discussion</h2>
+        </div>
+    </div>
+    <!-- Section Title End -->
     <div class='main--content-inner drop--shadow'>
                             <!-- Post Item Start -->
 
@@ -29,7 +36,7 @@ require "header.php";
                                 <div class="post--img">
                                     <a href="blog-details.html">
                                         <?php 
-                                            echo "<img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($post_row['gambar'])."' height ='378' width='800'/>";
+                                            echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($post_row['gambar'])."' height ='200' width='1200'/></center>";
                                         ?>
                                     </a>
                                 </div>
@@ -66,6 +73,8 @@ require "header.php";
                                                         echo "A few seconds ago";       
                                                         elseif($days == 0 && $hours == 0)
                                                         echo $minutes.' minutes ago';
+                                                        elseif($days == 0)
+                                                        echo $hours.' hours ago';
                                                     ?>
                                                 </span>
                                             </li>
@@ -76,12 +85,6 @@ require "header.php";
                                     <!-- Post Title Start -->
                                     <div class="post--title mt--10">
                                         <h2 class="h2"><?php echo $post_row['judul']; ?></h2 >
-                                    </div>
-                                     <!-- Post Member Start -->
-                                    <div class="post--title mt--10">
-                                        <h3 class="h4">
-                                            For <?php echo $post_row['member']; ?> Member
-                                        </h3> 
                                     </div>
                                     <!-- Post Title End -->
 
@@ -124,6 +127,7 @@ require "header.php";
                                             while ($comment_row=mysqli_fetch_array($comment_query)){
                                             $id_comment = $comment_row['id_comment'];
                                             $comment_by = $comment_row['username'];
+                                            $id_post = $comment_row['id_post'];
                                         ?>
                                         <div class="comment--item mr--15 clearfix">
                                             <div class="img float--left" data-overlay="0.3" data-overlay-color="primary">
@@ -161,16 +165,22 @@ require "header.php";
                                                     </div>
                                                 </div>
 
+                                                <!-- KURANG (TOMBOL INI MUNCUL BERDASARKAN YANG LOGIN) -->
+                                                <a style="float:right;" href="proses_delete_comment.php?idc=<?php echo urlencode($id_comment); ?>&amp;id=<?php echo urlencode($id_post); ?>" title="Delete" class="btn-link" data-toggle="tooltip" data-placement="bottom">
+                                                        <img src="img/delete-cross-outline-interface-symbol.png" height="15" width="15">
+                                                </a>
                                                 <div class="content pt--8 fs--14">
                                                     <p>
+                                                        
                                                      <?php echo $comment_row['content']; ?>
                                                     </p>
                                                 </div>
                                             </div>
-                                            <?php
+                                            
+                                        </div>
+                                        <?php
                                             }
                                             ?>
-                                            <hr>
                                             &nbsp;
                                             <?php 
                                             if ($u_id = $id){
@@ -179,7 +189,6 @@ require "header.php";
                                                 
                                             <?php
                                             } } ?>
-                                        </div>
                                         <!-- Comment Item End -->
                                     </li>
                                 </ul>

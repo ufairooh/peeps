@@ -48,7 +48,7 @@ require 'connect.php';
                         <!-- Header Navbar Logo Start -->
                         <div class="header--navbar-logo navbar-brand">
                             <a href="index.php">
-                                <h3 style="color: white">PEEPS</h3>
+                                <h2 style="color: #99cccc">PEEPS</h2>
                             </a>
                         </div>
                         <!-- Header Navbar Logo End -->
@@ -62,18 +62,11 @@ require 'connect.php';
                                     <span>Home</span>
                                 </a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Hobies</span>
-                                </a>
-                            </li>
-
                             <!-- session username -->
                             <li>
                                 <a href="page/account.php" class="btn-link">
-                                    <i class="fa mr--8 fa-user-o"></i>
                                     <span>
-                                        Login/Register
+                                        Profile
                                     </span>
                                 </a>
                             </li>
@@ -95,7 +88,7 @@ require 'connect.php';
             <!-- Header Navbar End -->
     </header>
 
-    <div class="page--header pt--60 pb--60 text-center" style="background-image: url('<?=$image?>');" data-overlay="0.85">
+    <div class="page--header pt--60 pb--60 text-center" style="background-image: url('img/hardwood-1851071__340.jpg');" data-overlay="0.85">
         <div class="container">
             <div class="title">
                 <h2 class="h1 text-white">peeps for finding a new friend with the same hoby</h2>

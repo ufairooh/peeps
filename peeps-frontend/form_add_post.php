@@ -9,11 +9,6 @@
                 <input type='text' name='subject' placeholder='Subject *' class='form-control' required>
             </div>
         </div>
-		<div class='col-xs-12'>
-            <div class='form-group'>
-                <input type='number' name='jumlah' onkeypress='return Angkasaja(event)' placeholder='Jumlah Anggota (hanya angka) *' class='form-control' required>
-            </div>
-        </div>
 
         <div class='col-xs-12'>
             <div class='form-group'>
