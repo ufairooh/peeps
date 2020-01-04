@@ -59,7 +59,7 @@ require 'connect.php';
                             </li>
                             <!-- session username -->
                             <li>
-                                <a href="index_user.php" class="btn-link">
+                                <a href="index_user.php<?php echo '?id='.$_SESSION['id']; ?>" class="btn-link">
                                     <i class="fa mr--8 fa-user-o"></i>
                                     <span>
                                         Profile

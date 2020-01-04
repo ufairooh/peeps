@@ -1,4 +1,12 @@
-<?php
+<?php 
+include 'db.php';
+
+if ($_SESSION['id'] == false ){
+    header('location:loginusers.php');
+}
+
+require "header.php";
+
 $id=htmlspecialchars(@$_GET['id']);
 $query="SELECT * FROM post WHERE id_post='$id'";
 $execute=$konek->query($query);
@@ -8,6 +16,7 @@ if ($execute->num_rows > 0){
 	 header('location:index_user.php');
 }
 ?>
+
 <form action='proses_edit_post.php' enctype='multipart/form-data' method='post'>
 
     <input type="hidden" name="op" value="post">

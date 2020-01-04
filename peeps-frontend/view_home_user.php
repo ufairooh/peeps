@@ -1,13 +1,10 @@
 <?php
 require "header.php";
+$id_user=$_GET['id'];
 ?>
     <div class="main--content" data-trigger="stickyScroll">
 	<?php
-            if (@htmlspecialchars($_GET['aksi'])=='edit'){
-                include 'form_edit_post.php';
-            }else{
                 include 'form_add_post.php';
-            }
             ?>
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
@@ -53,7 +50,7 @@ require "header.php";
                         $result = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC");
                         $total = mysqli_num_rows($result);
                         $pages = ceil($total/$page);            
-                        $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where users.id_user='".$_SESSION['id']."' order by id_post DESC LIMIT $mulai, $page ");
+                        $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where users.id_user='".$id_user."' order by id_post DESC LIMIT $mulai, $page ");
                         if (!$query) {
                             printf("Error: %s\n", mysqli_error($konek));
                             exit();
@@ -104,8 +101,6 @@ require "header.php";
                                 </div>
 
                                 <div class="activity--content">
-								<a class="btn btn-light-green" href="index_user.php<?php echo '?aksi=edit&id='.$id; ?>">edit</a>
-								<a class="btn btn-light-green" href="proses_delete_post.php<?php echo '?id='.$id; ?>">delete</a>
                                     <div class="link--embed">
                                         <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">

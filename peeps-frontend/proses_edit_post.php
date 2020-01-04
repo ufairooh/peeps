@@ -21,7 +21,7 @@ switch ($op){
     case 'post'://tambah data barang
         $query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category' where id_post='$id_post'";
         $crud->addData($query,$konek);
-		    header('location:index_user.php');
-    break;
+	break;
 	
 }
+?>

@@ -10,4 +10,4 @@ if ($_SESSION['id'] == false ){
     header('location:loginusers.php');
 }
 ?>
-<?php include "view_home_user.php"; ?>
+<?php include "view_home.php"; ?>

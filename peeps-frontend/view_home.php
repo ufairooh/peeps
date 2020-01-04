@@ -3,8 +3,8 @@ require "header.php";
 ?>
     <div class="main--content" data-trigger="stickyScroll">
 	<?php
-        include 'form_add_post.php';
-    ?>
+                include 'form_add_post.php';
+            ?>
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
@@ -72,9 +72,9 @@ require "header.php";
 
                             <div class="activity--info fs--14">
                                 <div class="activity--header">
-                                    <p>
+                                    <a href="index_user.php<?php echo '?id='.$row['id_user']; ?>"><p>
                                         <?php echo "".$row['username'].""; ?>
-                                    </p>
+                                    </p></a>
                                 </div>
 
                                 <div class="activity--meta fs--12">
@@ -100,7 +100,7 @@ require "header.php";
                                 </div>
 
                                 <div class="activity--content">
-                                    <div class="link--embed">
+								<div class="link--embed">
                                         <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">
                                             <?php 

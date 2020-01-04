@@ -57,7 +57,7 @@ require "header.php";
                                     <div class="post--meta">
                                         <ul class="nav">
                                             <li>
-                                                <a href="#">
+                                                <a href="index_user.php<?php echo '?id='.$post_row['id_user']; ?>">
                                                     <i class="mr--8 fa fa-user-o"></i>
                                                     <span>Posted by: <?php echo $posted_by; ?></span>
                                                 </a>
@@ -84,8 +84,15 @@ require "header.php";
                                                     ?>
                                                 </span>
                                             </li>
+											<li>
+											<?php if($post_row['id_user']==$_SESSION['id']){
+								?><a class="btn btn-light-green" href="form_edit_post.php<?php echo '?id='.$id; ?>">edit</a>
+								<a class="btn btn-light-green" href="proses_delete_post.php<?php echo '?id='.$id; ?>">delete</a>
+								<?php } ?>
+											</li>
                                         </ul>
                                     </div>
+									
                                     <!-- Post Meta End -->
 
                                     <!-- Post Title Start -->
