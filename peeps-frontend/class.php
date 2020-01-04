@@ -20,9 +20,9 @@ class Main
 
 				if ($sql->rowCount()) {
 					$data = $sql->fetch();
-					$_SESSION['id'] = $data['id'];
-					$_SESSION['id'] = true;
-					$_SESSION["username"] = $_POST["username"];
+					$_SESSION["id"] = $data['id_user'];
+					//$_SESSION['id'] = true;
+					$_SESSION["username"] = $data["username"];
 					header('location:index.php?');
 				}else{
 					echo "username or password are wrong";

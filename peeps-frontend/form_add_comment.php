@@ -4,6 +4,7 @@
     <form method="post"  action='proses_add_comment.php'>
         <div class="row gutter--15">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
+			<input type="hidden" name="user" value="<?php echo $_SESSION['id']?>">
             <div class="col-sm-12">
                 <div class="form-group">
                     <textarea name="comment_content" placeholder="Comment *" class="form-control" required></textarea>

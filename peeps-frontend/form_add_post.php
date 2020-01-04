@@ -1,12 +1,24 @@
 <form action='proses_add_post.php' enctype='multipart/form-data' method='post'>
 
     <input type="hidden" name="op" value="post">
-	<input type='text' name='user' placeholder='Subject *' class='form-control' value='$user' required>
+	<input type='hidden' name='user' placeholder='Subject *' class='form-control' value='<?php echo $_SESSION['id']?>' required>
 
     <div class='row gutter--20'>
         <div class='col-xs-12'>
             <div class='form-group'>
                 <input type='text' name='subject' placeholder='Subject *' class='form-control' required>
+            </div>
+        </div>
+		
+		<div class='col-xs-12'>
+            <div class='form-group'>
+                <select name="category" class="form-control form-sm"required>
+				<option selected hidden>Choose Category</option>
+                                                                        <option value="bahasa">Bahasa</option>
+                                                                        <option value="film">Film</option>
+                                                                        <option value="olahraga">Olahraga</option>
+                                                                    </select>
+																	
             </div>
         </div>
 

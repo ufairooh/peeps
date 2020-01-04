@@ -1,4 +1,10 @@
-<?php
+<?php 
+include 'db.php';
+
+if ($_SESSION['id'] == false ){
+    header('location:loginusers.php');
+}
+
 require "header.php";
 ?>
 <div class='main--content' data-trigger='stickyScroll'>

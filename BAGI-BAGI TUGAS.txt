@@ -10,7 +10,7 @@ HOME
 
 POST-DETAIL
 1. reply comment					(m)
-2. delete comment biar kembali ke halaman sebelumnya	(u) 
+2. delete comment biar kembali ke halaman sebelumnya	(u) SUDAH
 3. tampilan delete comment di perkecil ke ujung kanan	(m) SUDAH
 4. icon delete tampil bersasarkan yang login		(m)
 4. nampilin foto profile				(u)
@@ -19,7 +19,7 @@ POST-DETAIL
 
 HEADER
 1. logo							(m) SUDAH
-2. nav bar logout					(a)
+2. nav bar logout					(a) SUDAH
 
 FOOTER
 1. COPYRIGHT						(m) SUDAH
@@ -28,14 +28,14 @@ DASHBOARD
 1. buat admin (CRUD)					(a)
 2. buat user (read, delete)				(a)
 3. buat post (CRUD)					(u)
-4. buat komen (read, delete)				(u)
+4. buat komen (read, delete)				(m)
 		
 
 PROFILE
 1. bikin page profile yang isinya			
 	- nampilin profile dia		(bisa edit, termasuk masukin foto profile)	(a)
-	- nampilin post yang dia bikin 	(bisa edit/delete)				(u)
-	- form post lagi								(u)
+	- nampilin post yang dia bikin 	(bisa edit/delete)				(u) SUDAH
+	- form post lagi								(u) SUDAH
 
 REGISTER
 1. validasi, verifikasi (pake regex)			(a)
