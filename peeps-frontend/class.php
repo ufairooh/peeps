@@ -22,7 +22,8 @@ class Main
 					$data = $sql->fetch();
 					$_SESSION['id'] = $data['id'];
 					$_SESSION['id'] = true;
-					header('location:index.php');
+					$_SESSION["username"] = $_POST["username"];
+					header('location:index.php?');
 				}else{
 					echo "username or password are wrong";
 				}
@@ -37,7 +38,7 @@ class Main
 			session_start();
 			session_destroy();
 			// echo "logout ngapa";
-			header('location:loginuser.php');
+			header('location:loginusers.php');
 		}
 	}
 }

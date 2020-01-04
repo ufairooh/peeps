@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2020 at 11:36 AM
+-- Generation Time: Jan 04, 2020 at 11:14 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -34,6 +34,14 @@ CREATE TABLE `admins` (
   `password_a` varchar(128) NOT NULL,
   `contact` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id_admin`, `username_a`, `password_a`, `contact`) VALUES
+(1, 'adminaja', 'qwerty', '0986796'),
+(2, 'azkaadmin', 'asdfgh', '1234567');
 
 -- --------------------------------------------------------
 
@@ -68,7 +76,8 @@ INSERT INTO `comment` (`id_comment`, `id_post`, `id_user`, `content`, `date_post
 (27, 3, 1, 'mm', '1578031666'),
 (28, 3, 1, 'jus', '1578036300'),
 (29, 7, 1, 'It yiu', '1578047322'),
-(30, 7, 1, 'agree', '1578047329');
+(30, 7, 1, 'agree', '1578047329'),
+(31, 7, 1, 'halo', '1578122294');
 
 -- --------------------------------------------------------
 
@@ -118,12 +127,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `nama`, `gender`, `hobi`) VALUES
-(1, 'amalazza', 'malacantik', 'Nurul Amala Azza', 'Perempuan', 'Menulis'),
-(2, 'joko', 'malacantik', 'Kim Woo Bin', 'Laki-laki', 'Olahraga');
+(1, 'zkady', 'azkady1930', 'azka dini', 'female', 'menggambar\r\n'),
+(2, 'amalazza', 'malacantik', 'Nurul Amala Azza', 'Perempuan', 'Menulis'),
+(3, 'joko', 'malacantik', 'Kim Woo Bin', 'Laki-laki', 'Olahraga'),
+(4, 'intanaja', 'asdfgh', 'intan boy', 'female', 'makan');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `comment`
@@ -139,20 +156,38 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`id_post`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
   MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

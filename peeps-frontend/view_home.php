@@ -1,7 +1,6 @@
 <?php
 require "header.php";
-?> 
-
+?>
     <div class="main--content" data-trigger="stickyScroll">
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">

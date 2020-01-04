@@ -1,12 +1,7 @@
 <?php
 require 'connect.php';
-
-//session_start();
-//if($_SESSION['nama_admin']=='')
-//{
-  //  header("location:./login.php");
-//}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +59,8 @@ require 'connect.php';
                             </li>
                             <!-- session username -->
                             <li>
-                                <a href="page/account.php" class="btn-link">
+                                <a href="Profile.php" class="btn-link">
+                                    <i class="fa mr--8 fa-user-o"></i>
                                     <span>
                                         Profile
                                     </span>
@@ -73,12 +69,12 @@ require 'connect.php';
 
                             <li>
                              <!-- DISINI KODINGAN LOGOUT -->
-                                <a name="btnLogout" class="btn-link">
-                                <i class="fa mr--8 fa-user-o"></i>
-                                <span>
-                                Logout
-                                </span>
-                                </a>
+                               <?php 
+                                $db->logout();
+                                ?>
+                               <form method="POST">
+                                    <button type="submit" name="btnLogout" class="btn-link" style="margin-top: 45%;">Logout</button>
+                                </form>
                             </li>
                         </ul>
                         <!-- Header Nav Links End -->
@@ -96,6 +92,6 @@ require 'connect.php';
         </div>
     </div>
     <div id="main-body">
-    <section class="page--wrapper pt--80 pb--20">
+    <section class="page--wrapper pt--80 pb--20 " style="margin-top: -30px;">
         <div class="container">
     		<div class="row">
