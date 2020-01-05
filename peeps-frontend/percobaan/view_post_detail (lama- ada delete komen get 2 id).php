@@ -198,14 +198,15 @@ require "header.php";
                                                 </div>
 
                                                 <!-- KURANG (TOMBOL INI MUNCUL BERDASARKAN YANG LOGIN) -->
-                                                <?php if($comment_row['id_user']==$_SESSION['id'])
+                                                <?php if($post_row['id_user']==$_SESSION['id'])
                                                 {
                                                 ?>
+                                                <div>
                                                 <a style="float:right;" href="proses_delete_comment.php?idc=<?php echo urlencode($id_comment); ?>&amp;id=<?php echo urlencode($id_post); ?>" title="Delete" class="btn-link" data-toggle="tooltip" data-placement="bottom">
-                                                    <img src="img/delete-cross-outline-interface-symbol.png" height="15" width="15">
+                                                <img src="img/delete-cross-outline-interface-symbol.png" height="15" width="15">
                                                 </a>
+                                                </div>
                                                 <?php } ?>
-                                                
                                                 <div class="content pt--8 fs--14">
                                                     <p>
                                                         

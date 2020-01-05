@@ -1,6 +1,5 @@
 <?php
 require "header.php";
-$id_user=$_GET['id'];
 ?>
     <div class="main--content" data-trigger="stickyScroll">
 	<?php
@@ -9,7 +8,7 @@ $id_user=$_GET['id'];
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
-                        <h2 class="h2">My Activity</h2>
+                        <h2 class="h2">Activity</h2>
                     </div>
                 </div>
         <!-- Section Title End -->
@@ -44,16 +43,22 @@ $id_user=$_GET['id'];
                 <!-- Activity Items Start -->
                 <ul class="activity--items nav">
                     <?php
-                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC";
-                        $result = mysqli_query($konek, $query);
-                        if (!$result) {
+                        $page = 10;
+                        $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+                        $mulai = ($page>1) ? ($page * $page) - $page : 0;
+                        $result = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC");
+                        $total = mysqli_num_rows($result);
+                        $pages = ceil($total/$page);            
+                        $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user  order by id_post DESC LIMIT $mulai, $page");
+                        if (!$query) {
                             printf("Error: %s\n", mysqli_error($konek));
                             exit();
                         }
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            $id = $row['id_post']; 
-                    ?>
+                        $no =$mulai+1;
+
+                        while ($row = mysqli_fetch_assoc($query)) {
+                        $id = $row['id_post']; 
+                        ?>
 
                     <li>
                         <input type="text" hidden="true" value="<?php echo $no++; ?>"/>
@@ -67,9 +72,9 @@ $id_user=$_GET['id'];
 
                             <div class="activity--info fs--14">
                                 <div class="activity--header">
-                                    <p>
+                                    <a href="index_user.php<?php echo '?id='.$row['id_user']; ?>"><p>
                                         <?php echo "".$row['username'].""; ?>
-                                    </p>
+                                    </p></a>
                                 </div>
 
                                 <div class="activity--meta fs--12">
@@ -95,7 +100,7 @@ $id_user=$_GET['id'];
                                 </div>
 
                                 <div class="activity--content">
-                                    <div class="link--embed">
+								<div class="link--embed">
                                         <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">
                                             <?php 
@@ -134,6 +139,12 @@ $id_user=$_GET['id'];
             <!-- Activity List End -->
         </div>
 
+        <!-- Load More Button Start -->
+        <div class="load-more--btn pt--30 text-center">
+            <?php for ($i=1; $i<=$pages ; $i++){ ?>
+            <a href="?page=<?php echo $i; ?>" class="btn btn-animate"><?php echo $i; ?></a>
+            <?php } ?>
+        </div>
         <!-- Load More Button End -->
     </div>
     <!-- Main Content End -->

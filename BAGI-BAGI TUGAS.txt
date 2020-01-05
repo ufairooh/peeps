@@ -1,20 +1,36 @@
 DEADLINE MINGGU JAM 12 SIANG.
 PAKE FOLDER YANG PEEPS-FRONTEND, PEEPS-BACKEND
 
+
+REQUEST UFA
+1. Mal itu kan gua tombol edit sama delete 		(m) SUDAH	
+	yang buat post di view post detail.
+	Tolong editin dong tampilannya.
+
+EDIT POST
+1. bagusin form edit					(m) SUDAH	
+2. id di edit post belum ke hidden			(u/a)
+3. edit image ga bisa					(u/a)
+4. abis edit kembali ke halaman sebelum			(u/a)
+
 HOME
 1. tampilan home bagusin				(m) SUDAH	
 2. autosearch pake js					(a)
 3. hapus member						(m) SUDAH
 4. kotaknya ketengahin karena ga ada iklan		(m) SUDAH
-5. paging post						(m) SUDAH
+5. paging post						(m) 
+6. tambahin kategori					(m) SUDAH
+7. tampilan form add bagusin				(m) SUDAH	
 
 POST-DETAIL
 1. reply comment					(m)
 2. delete comment biar kembali ke halaman sebelumnya	(u) SUDAH
 3. tampilan delete comment di perkecil ke ujung kanan	(m) SUDAH
-4. icon delete tampil bersasarkan yang login		(m)
+4. icon delete tampil bersasarkan yang login		(m) SUDAH
 4. nampilin foto profile				(u)
 5. kotaknya ketengahin karena ga ada iklan		(m) SUDAH
+6. tambahin kategori					(m) SUDAH
+7. delete post kembali ke index				(m) SUDAH
 
 
 HEADER
@@ -36,6 +52,9 @@ PROFILE
 	- nampilin profile dia		(bisa edit, termasuk masukin foto profile)	(a)
 	- nampilin post yang dia bikin 	(bisa edit/delete)				(u) SUDAH
 	- form post lagi								(u) SUDAH
+	- tambahin kategori								(m) SUDAH
+	- tampilan form add bagusin							(m) SUDAH	
+
 
 REGISTER
 1. validasi, verifikasi (pake regex)			(a)
