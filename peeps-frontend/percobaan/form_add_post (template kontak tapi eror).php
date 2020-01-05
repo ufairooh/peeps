@@ -3,7 +3,7 @@
 <div class="contact--section pt--80 pb--20">
     <div class="container">
         <!-- Map Start -->
-        <div class="map mb--80" style="background-image: ''"></div>
+        <div class="map mb--100" style="background-image: ''"></div>
         <!-- Map End -->
 
         <div class="row">
@@ -45,21 +45,16 @@
                             <div class='col-xs-12'>
                                 <div class='form-group'>
                                     <textarea name='message' placeholder='Message *' class='form-control' required></textarea>
-                                </div>
-                            </div>
-
-                            <div class='col-xs-12'>
-
-                                <div class='image-upload'>
-                                    <label for='file-input'>
-                                        Choose Image * <img src='picture.png' height='30px' width='40px'/>
-                                    </label>
-                                    <input name='image' id='file-input' type='file' onchange='readURL(this);' />
-                                    <br>
-                                    <img id='blah'/>
-                                </div>
-                            </div>
                                 
+                                <div class='image-upload'>
+                                <label for='file-input'>
+                                    <img src='picture.png' height='24px' width='24px'/>
+                                </label>
+                                <input name='image' id='file-input' type='file' onchange='readURL(this);' required/>
+                                <br><img id='blah'/>
+                            </div>
+                            </div>
+                            </div>
 
                             <div class='col-xs-12'>
                                 <button name='submit' type='submit' class='btn btn-primary mt--10'>Send Message</button>

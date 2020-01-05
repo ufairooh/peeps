@@ -3,6 +3,9 @@ require "header.php";
 ?>
     <div class="main--content" data-trigger="stickyScroll">
 
+	<?php
+        include 'form_add_post.php';
+    ?>
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
@@ -33,17 +36,7 @@ require "header.php";
                         </select>
                     </label>
                 </div>
-
-            <?php
-                include 'form_add_post.php';
-            ?>
             </div>
-                <div class="section--title text-center" style="margin-top: 0">
-                    <div class="title lined">
-                        <h2 class="h2">Postingan Hari Ini</h2>
-                    </div>
-                </div>
-            <hr>
             <!-- Filter Nav End -->
 
             <!-- Activity List Start -->
@@ -51,22 +44,16 @@ require "header.php";
                 <!-- Activity Items Start -->
                 <ul class="activity--items nav">
                     <?php
-                        $page = 3;
-                        $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
-                        $mulai = ($page>1) ? ($page * $page) - $page : 0;
-                        $result = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC");
-                        $total = mysqli_num_rows($result);
-                        $pages = ceil($total/$page);            
-                        $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user  order by id_post DESC LIMIT $mulai, $page");
-                        if (!$query) {
+                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC";
+                        $result = mysqli_query($konek, $query);
+                        if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
                             exit();
                         }
-                        $no =$mulai+1;
-
-                        while ($row = mysqli_fetch_assoc($query)) {
-                        $id = $row['id_post']; 
-                        ?>
+                        while ($row = mysqli_fetch_array($result))
+                        {
+                            $id = $row['id_post']; 
+                    ?>
 
                     <li>
                         <input type="text" hidden="true" value="<?php echo $no++; ?>"/>
@@ -128,6 +115,9 @@ require "header.php";
                                                     <?php echo "".$row['deskripsi'].""; ?>
                                                 </p>
                                             </div>
+                                            <div class="link--rel ff--primary text-uppercase">
+                                                <p class="fa fa-folder-o"> [ <?php echo "".$row['category'].""; ?> ]</p>
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -144,12 +134,6 @@ require "header.php";
             <!-- Activity List End -->
         </div>
 
-        <!-- Load More Button Start -->
-        <div class="load-more--btn pt--30 text-center">
-            <?php for ($i=1; $i<=$pages ; $i++){ ?>
-            <a href="?page=<?php echo $i; ?>" class="btn btn-animate"><?php echo $i; ?></a>
-            <?php } ?>
-        </div>
         <!-- Load More Button End -->
     </div>
     <!-- Main Content End -->
