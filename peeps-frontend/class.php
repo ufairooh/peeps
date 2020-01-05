@@ -20,15 +20,14 @@ class Main
 
 				if ($sql->rowCount()) {
 					$data = $sql->fetch();
-					$_SESSION["id"] = $data['id_user'];
-					//$_SESSION['id'] = true;
-					$_SESSION["username"] = $data["username"];
+					$_SESSION['id'] = $data['id'];
+					$_SESSION['id'] = true;
+					$_SESSION["username"] = $_POST[$user];
 					header('location:index.php?');
 				}else{
-					echo "username or password are wrong";
+					    $message = "Maaf anda tidak bisa login, silakan buat akun terlebih dahulu :)";
+						echo "<script type='text/javascript'>alert('$message');</script>";
 				}
-			}else{
-				echo "please enter username and password";
 			}
 		}
 	}

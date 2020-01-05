@@ -2,9 +2,7 @@
 require "header.php";
 ?>
     <div class="main--content" data-trigger="stickyScroll">
-	<?php
-                include 'form_add_post.php';
-            ?>
+
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
@@ -18,7 +16,7 @@ require "header.php";
                 <div class="filter--link float--right">
                     <div class="header--search style--1" data-form="validate">
                         <form action="#">
-                            <input type="text" name="search" placeholder="Search here..." class="form-control form-sm" required  style="border-color: #e5e5e5">
+                            <input type="text" name="search" placeholder="Search here..." class="form-control form-sm" required  style="border-color: #e5e5e5; margin-top : -25px; width: 50%; color: black">
 
                             <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
                         </form>
@@ -35,7 +33,17 @@ require "header.php";
                         </select>
                     </label>
                 </div>
+
+            <?php
+                include 'form_add_post.php';
+            ?>
             </div>
+                <div class="section--title text-center" style="margin-top: 0">
+                    <div class="title lined">
+                        <h2 class="h2">Postingan Hari Ini</h2>
+                    </div>
+                </div>
+            <hr>
             <!-- Filter Nav End -->
 
             <!-- Activity List Start -->

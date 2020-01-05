@@ -36,7 +36,7 @@ if (isset($_SESSION['id'])) {
 $db->login();
  ?>
 	<div class="limiter">
-		<div class="page--header pt--60 pb--60 text-center" style="background-image: url('img/hardwood-1851071__340.jpg'); height: 694px;" data-overlay="0.85">
+		<div class="page--header pt--60 pb--60 text-center" style="background-image: url('img/hardwood-1851071__340.jpg'); height: 695px;" data-overlay="0.85">
 <br>
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
@@ -48,7 +48,7 @@ $db->login();
 						Login
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+					<div class="wrap-input100 validate-input" data-validate = "Username kosong">
 						<input class="input100" type="text" name="user" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -56,7 +56,7 @@ $db->login();
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input" data-validate = "Password kosong">
 						<input class="input100" type="password" name="pw" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -70,7 +70,7 @@ $db->login();
 						</button>
 					</div>
 					<br>
-					<a class="txt2" href="logincss/#">
+					<a class="txt2" href="form_regis.php">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
