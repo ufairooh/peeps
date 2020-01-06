@@ -19,8 +19,9 @@ $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 	$category = $_POST['category'];
 switch ($op){
     case 'post'://tambah data barang
-        $query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category' where id_post='$id_post'";
+        $query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category', gambar='$image' where id_post='$id_post'";
         $crud->addData($query,$konek);
+		header("Location: index.php");
 	break;
 	
 }

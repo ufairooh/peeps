@@ -3,15 +3,13 @@ require "header.php";
 $id_user=$_GET['id'];
 ?>
     <div class="main--content" data-trigger="stickyScroll">
-    <br><br>
-    <?php
+	<?php
                 include 'form_add_post.php';
             ?>
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
                         <h2 class="h2">My Activity</h2>
-                        <?php echo $id_user; ?>
                     </div>
                 </div>
         <!-- Section Title End -->
@@ -46,21 +44,16 @@ $id_user=$_GET['id'];
                 <!-- Activity Items Start -->
                 <ul class="activity--items nav">
                     <?php
-                        $page = 3;
-                        $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
-                        $mulai = ($page>1) ? ($page * $page) - $page : 0;
-                        $result = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC");
-                        $total = mysqli_num_rows($result);
-                        $pages = ceil($total/$page);            
-                        $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where users.id_user='".$id_user."' order by id_post DESC LIMIT $mulai, $page ");
-                        if (!$query) {
+                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where post.id_user=".$id_user." order by id_post DESC";
+                        $result = mysqli_query($konek, $query);
+                        if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
                             exit();
                         }
-                        $no =$mulai+1;
-                        while ($row = mysqli_fetch_assoc($query)) {
-                        $id = $row['id_post']; 
-                        ?>
+                        while ($row = mysqli_fetch_array($result))
+                        {
+                            $id = $row['id_post']; 
+                    ?>
 
                     <li>
                         <input type="text" hidden="true" value="<?php echo $no++; ?>"/>
@@ -68,7 +61,14 @@ $id_user=$_GET['id'];
                         <div class="activity--item">
                             <div class="activity--avatar">
                                 <a href="member-activity-personal.html">
-                                    <img src="img/activity-img/avatar-05.jpg" alt="">
+                                    
+									<?php 
+									if ($row['foto'] == null){
+										echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
+									}
+									else{
+                                                echo "<img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['foto'])."'/>";
+									}?>
                                 </a>
                             </div>
 
@@ -122,6 +122,9 @@ $id_user=$_GET['id'];
                                                     <?php echo "".$row['deskripsi'].""; ?>
                                                 </p>
                                             </div>
+                                            <div class="link--rel ff--primary text-uppercase">
+                                                <p class="fa fa-folder-o"> [ <?php echo "".$row['category'].""; ?> ]</p>
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -138,12 +141,6 @@ $id_user=$_GET['id'];
             <!-- Activity List End -->
         </div>
 
-        <!-- Load More Button Start -->
-        <div class="load-more--btn pt--30 text-center">
-            <?php for ($i=1; $i<=$pages ; $i++){ ?>
-            <a href="?page=<?php echo $i; ?>" class="btn btn-animate"><?php echo $i; ?></a>
-            <?php } ?>
-        </div>
         <!-- Load More Button End -->
     </div>
     <!-- Main Content End -->
@@ -151,15 +148,19 @@ $id_user=$_GET['id'];
 function readURL(input) {
 if (input.files && input.files[0]) {
     var reader = new FileReader();
+
     reader.onload = function (e) {
         $('#blah')
             .attr('src', e.target.result)
             .width(500)
             .height(200);
     };
+
     reader.readAsDataURL(input.files[0]);
 }
 }
+
+
 </script>
 <?php
 require "footer.php";

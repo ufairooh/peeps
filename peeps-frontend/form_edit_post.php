@@ -41,8 +41,8 @@ if ($execute->num_rows > 0){
 
                         <!-- BELUM KE HIDDEN NIH -->
                         <input type="hidden" name="op" value="post">
-                    	<input type='text' name='user' placeholder='Subject *' class='form-control' value='<?php echo $data['id_user']?>' required>
-                    	<input type='text' name='post' placeholder='Subject *' class='form-control' value='<?php echo $data['id_post']?>' required>
+                    	<input type='hidden' name='user' placeholder='Subject *' class='form-control' value='<?php echo $data['id_user']?>' required>
+                    	<input type='hidden' name='post' placeholder='Subject *' class='form-control' value='<?php echo $data['id_post']?>' required>
 
                         <div class='row gutter--20'>
                             <br>
@@ -83,7 +83,12 @@ if ($execute->num_rows > 0){
                                     </label>
                                     <input name='image' id='file-input' type='file' onchange='readURL(this);' />
                                     <br>
-                                    <img id='blah'/>
+                                    <?php
+									if (empty($_FILES)){
+										echo "<img id='blah' class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($data['gambar'])."'/>";
+									}
+									else if (! empty($_FILES)){
+									echo "<img id='blah'/>";}?>
                                 </div>
                             </div>
                                 
@@ -106,4 +111,23 @@ if ($execute->num_rows > 0){
     </div>
 </div>
 <!-- Contact Section End -->
+<script type='text/javascript'>
+function readURL(input) {
+if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#blah')
+            .attr('src', e.target.result)
+            .width(500)
+            .height(200);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+}
+}
+
+
+
+</script>
 							

@@ -9,9 +9,9 @@ REQUEST UFA
 
 EDIT POST
 1. bagusin form edit					(m) SUDAH	
-2. id di edit post belum ke hidden			(u/a)
-3. edit image ga bisa					(u/a)
-4. abis edit kembali ke halaman sebelum			(u/a)
+2. id di edit post belum ke hidden			(u) SUDAH
+3. edit image ga bisa					(u) SUDAH
+4. abis edit kembali ke halaman sebelum			(u) SUDAH
 
 HOME
 1. tampilan home bagusin				(m) SUDAH	
@@ -27,7 +27,7 @@ POST-DETAIL
 2. delete comment biar kembali ke halaman sebelumnya	(u) SUDAH
 3. tampilan delete comment di perkecil ke ujung kanan	(m) SUDAH
 4. icon delete tampil bersasarkan yang login		(m) SUDAH
-4. nampilin foto profile				(u)
+4. nampilin foto profile				(u) SUDAH
 5. kotaknya ketengahin karena ga ada iklan		(m) SUDAH
 6. tambahin kategori					(m) SUDAH
 7. delete post kembali ke index				(m) SUDAH

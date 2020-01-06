@@ -160,10 +160,17 @@ require "header.php";
                                             $id_comment = $comment_row['id_comment'];
                                             $comment_by = $comment_row['username'];
                                             $id_post = $comment_row['id_post'];
+											$foto = $comment_row['foto'];
                                         ?>
                                         <div class="comment--item mr--15 clearfix">
                                             <div class="img float--left" data-overlay="0.3" data-overlay-color="primary">
-                                                <img src="img/comments-img/avatar-01.jpg" alt="">
+                                                <?php 
+									if ($foto == null){
+										echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
+									}
+									else{
+                                                echo "<img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($foto)."'/>";
+									}?>
                                             </div>
                                             <div class="info ov--h">
                                                 <div class="header clearfix">
