@@ -2,14 +2,14 @@
 require "header.php";
 ?>
     <div class="main--content" data-trigger="stickyScroll">
-
+<br><br>
 	<?php
         include 'form_add_post.php';
     ?>
         <!-- Section Title Start -->
                 <div class="section--title text-center" style="margin-top: 0">
                     <div class="title lined">
-                        <h2 class="h2">Activity</h2>
+                        <h2 class="h2">Today Activity</h2>
                     </div>
                 </div>
         <!-- Section Title End -->

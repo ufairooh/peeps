@@ -48,11 +48,11 @@
     					<img id="preview" width="350px"/>
     					<p style="font-size: 10px; color: blue; margin-top: -8px; margin-bottom: 5px;">*upload foto profile</p>
 
-    					<input id="userfile" name="userfile" type="file" style="margin-left: 50px;" onchange="tampilkanPreview(this,'preview')"/>
+    					<input id="userfile" name="userfile" type="file" style="margin-left: 50px;" onchange="tampilkanPreview(this,'preview')" required />
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama tidak boleh kosong">
-						<input id="nama" class="input100" type="text" name="nama" placeholder="Nama">
+						<input id="nama" class="input100" type="text" name="nama" placeholder="Nama"  required />
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
   		<span class="symbol-input100">
 			<i class="fa fa-envelope" aria-hidden="true"></i>
 		</span>
-    <select id="gender" name="gender" class="dropdown-select input100" style="font-size: 16px; font-style: bold; ">
+    <select id="gender" name="gender" class="dropdown-select input100" style="font-size: 16px; font-style: bold; "  required>
       <option value="0" >Gender</option>
       <option value="1" >Laki-Laki</option>
       <option value="2" >Perempuan</option>
@@ -72,7 +72,7 @@
   </div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Nama tidak boleh kosong">
-						<input id="hobi" class="input100" type="text" name="hobi" placeholder="Hobi">
+						<input id="hobi" class="input100" type="text" name="hobi" placeholder="Hobi"  required />
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Email tidak boleh kosong">
-						<input id="email" class="input100" type="text" name="email" placeholder="Email_anda@xyz.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+						<input id="email" class="input100" type="text" name="email" placeholder="Email_anda@xyz.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  required />
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -88,7 +88,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Username tidak boleh kosong">
-						<input id="username" class="input100" type="text" name="username" placeholder="Username">
+						<input id="username" class="input100" type="text" name="username" placeholder="Username"  required />
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -97,7 +97,7 @@
 					<p style="font-size: 10px; color: blue; margin-top: -8px; margin-bottom: 5px;">*username ini yang akan terlihat dipostingan anda</p>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input id="pw" class="input100" type="password" name="pw" placeholder="Password">
+						<input id="pw" class="input100" type="password" name="pw" placeholder="Password"  required />
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -109,6 +109,7 @@
 							Buat Akun
 						</button>
 					</div>
+					<br>
 						<a class="txt2" href="loginusers.php">
 							Jika sudah ada akun, silakan login.
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>

@@ -32,7 +32,7 @@
                             
                             <div class='col-xs-12'>
                                 <div class='form-group'>
-                                    <select name="category" class="form-control form-sm"required>
+                                    <select name="category" class="form-control form-sm" required>
                                         <option selected hidden>Choose Category</option>
                                         <option value="bahasa">Bahasa</option>
                                         <option value="film">Film</option>
