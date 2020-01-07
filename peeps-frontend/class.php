@@ -27,7 +27,8 @@ class Main
 					else{
 						$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
-					header('location:../backend/postAdmin.php');
+					$_SESSION['role'] = $data['role'];
+					header('location:../backend/tablePost.php');
 					}
 				}else{
 					    $message = "Maaf anda tidak bisa login, silakan buat akun terlebih dahulu :)";

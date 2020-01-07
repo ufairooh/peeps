@@ -41,10 +41,11 @@ FOOTER
 1. COPYRIGHT						(m) SUDAH
 
 DASHBOARD
-1. buat admin (CRUD)					(a)
-2. buat user (read, delete)				(a)
-3. buat post (CRUD)					(u)
-4. buat komen (read, delete)				(m)
+1. buat admin (create,update)				(a)
+2. buat admin (read,delet)				(u) SUDAH
+3. buat user (read, delete)				(u) SUDAH
+4. buat post (CRUD)					(u) SUDAH
+5. buat komen (read, delete)				(m)
 		
 
 PROFILE

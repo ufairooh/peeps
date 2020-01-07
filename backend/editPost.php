@@ -6,6 +6,7 @@ if ($_SESSION['id'] == false ){
 }
 
 require "header.php";
+if($_SESSION['role'] != ""){
 
 $id=htmlspecialchars(@$_GET['id']);
 $query="SELECT * FROM post WHERE id_post='$id'";
@@ -101,3 +102,7 @@ if ($execute->num_rows > 0){
 			return true;
 		}
 	</script>
+	<?php	
+}else{
+	header("Location: ../peeps-frontend/index.php");
+}?>

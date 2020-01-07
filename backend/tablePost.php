@@ -1,12 +1,12 @@
 <?php 
 include 'db.php';
 
-if ($_SESSION['id'] == false && $_SESSION['username'] == false){
-    header('location:loginusers.php');
+if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
+    header('location:./peepsloginusers.php');
 }
 
 require "header.php";
-?>
+if($_SESSION['role'] != ""){?>
 <h3 class='title-5 m-b-35'>Post Data</h3>
                                 <div class='table-data__tool'>
                                     <div class='table-data__tool-right'>
@@ -72,14 +72,20 @@ require "header.php";
                                             elseif($days == 0)
                                             echo $hours.' hours ago';
                                         ?></td>
-                                                <td><div class='table-data-feature'>
+                                                <td>
+												<div class='table-data-feature'>
+												<?php if($row['id_user']==$_SESSION['id'])
+                                            {
+                                            ?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>
                                                             <a class="btn btn-light-green" href="editPost.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-edit'></i></a>
                                                         </button>
+											<?php }?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
                                                             <a class="btn btn-light-green" href="proses_delete_post.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-delete'></i></a>
                                                         </button>
-                                                    </div></td>
+                                                    </div>
+													</td>
 
                                             </tr>
 											<?php 
@@ -88,3 +94,7 @@ require "header.php";
                                         </tbody>
                                     </table>
                                 </div>
+								<?php	
+}else{
+	header("Location: ../peeps-frontend/index.php");
+}?>

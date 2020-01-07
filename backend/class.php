@@ -27,6 +27,7 @@ class Main
 					else{
 						$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
+					$_SESSION['role'] = $data['role'];
 						header('location:../backend/postAdmin.php');
 					}
 				}else{
@@ -42,7 +43,7 @@ class Main
 			session_start();
 			session_destroy();
 			// echo "logout ngapa";
-			header('location:loginusers.php');
+			header('location:../peeps-frontend/loginusers.php');
 		}
 	}
 }

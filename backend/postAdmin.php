@@ -1,12 +1,12 @@
 <?php 
 include 'db.php';
 
-if ($_SESSION['id'] == false && $_SESSION['username'] == false){
-    header('location:loginusers.php');
+if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
+    header('location:./peepsloginusers.php');
 }
 
 require "header.php";
-?>
+if($_SESSION['role'] != ""){?>
 <div class='card'>
                                     <div class='card-header'>
                                         <strong>Post</strong>
@@ -86,3 +86,8 @@ require "header.php";
 			return true;
 		}
 	</script>
+<?php	
+}else{
+	header("Location: ../peeps-frontend/index.php");
+}?>
+
