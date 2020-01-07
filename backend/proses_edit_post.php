@@ -26,7 +26,7 @@ switch ($op){
 	else{
 		$query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category' where id_post='$id_post'";
         $crud->addData($query,$konek);
-	header("Location: index.php");}
+	header("Location: tablePost.php");}
 	
 	break;
 	

@@ -15,20 +15,12 @@ $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 	$judul = $_POST['subject'];
 	$deskripsi = $_POST['message'];
 	$id_user = $_POST['user'];
-	$id_post = $_POST['post'];
 	$category = $_POST['category'];
 switch ($op){
     case 'post'://tambah data barang
-	if($image != ""){
-        $query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category', gambar='$image' where id_post='$id_post'";
+        $query="INSERT INTO post (judul, deskripsi, gambar, tanggal, id_user, category) VALUE ('$judul', '$deskripsi', '$image', '".strtotime(date("Y-m-d h:i:sa"))."', '$id_user','$category')";
         $crud->addData($query,$konek);
-	header("Location: index.php");}
-	else{
-		$query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category' where id_post='$id_post'";
-        $crud->addData($query,$konek);
-	header("Location: index.php");}
-	
-	break;
+		header("Location: tablePost.php");
+    break;
 	
 }
-?>

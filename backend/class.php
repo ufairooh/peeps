@@ -20,14 +20,14 @@ class Main
 
 				if ($sql->rowCount()) {
 					$data = $sql->fetch();
-					if($data['role']=='user'){
+					if($data['role']==user){
 					$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
 					header('location:index.php?');}
 					else{
 						$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
-					header('location:../backend/postAdmin.php');
+						header('location:../backend/postAdmin.php');
 					}
 				}else{
 					    $message = "Maaf anda tidak bisa login, silakan buat akun terlebih dahulu :)";

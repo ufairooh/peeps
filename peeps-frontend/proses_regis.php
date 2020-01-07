@@ -13,7 +13,7 @@ $image = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
     $pass = $_POST['pw'];
 
         if (!empty($nama) && !empty($gender) && !empty($hobi) && !empty($email) && !empty($username) && !empty($pass) && !empty($image) ){
-            $query="INSERT INTO users (id_user, username, password, nama, email, gender, hobi, foto) VALUES (NULL,'$username', '$pass', '$nama', 'email', '$gender', '$hobi', '$image')";
+            $query="INSERT INTO users (id_user, username, password, nama, email, gender, hobi, foto, role) VALUES (NULL,'$username', '$pass', '$nama', 'email', '$gender', '$hobi', '$image', 'user')";
                 $crud->addData($query,$konek);
                 header('location:loginusers.php?');
         } else {

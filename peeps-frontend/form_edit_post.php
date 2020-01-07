@@ -13,7 +13,7 @@ $execute=$konek->query($query);
 if ($execute->num_rows > 0){
     $data=$execute->fetch_array(MYSQLI_ASSOC);
 }else{
-	 header('location:index_user.php');
+	 header('location:index.php');
 }
 ?>
 
@@ -110,6 +110,7 @@ if ($execute->num_rows > 0){
         </div>
     </div>
 </div>
+
 <!-- Contact Section End -->
 <script type='text/javascript'>
 function readURL(input) {
