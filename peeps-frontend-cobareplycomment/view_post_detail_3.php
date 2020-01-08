@@ -204,25 +204,14 @@ require "header.php";
                                                                     echo "A few seconds ago";       
                                                                     elseif($days == 0 && $hours == 0)
                                                                     echo $minutes.' minutes ago';
+                                                                    elseif($days == 0)
+                                                                    echo $hours.' hours ago';
                                                                 ?>
                                                             </span>
                                                         </p>
                                                     </div>
-                                                </div>
-
-                                                
-                                                <div class="content pt--8 fs--14">
-                                                    <p>
-                                                     <?php echo nl2br(strip_tags(htmlentities($commentdata)))?>
-                                                    </p>
-                                                     <h4 class="h4 pb--20 float--left" id="Replay">Total Replays (<?=$ReplayCount?>)</h4>
-                                                </div>
-                                                
-                                               
-                                                <div class="reply text-darker float--right">
-                                                  <!-- reply button -->
-                                                  <p pid='<?=$commentID?>' id='ReplayButt-<?=$commentID?>' class="btn btn-default ReplayButt float--right">Replay</p>
-                                                  <!-- end reply button -->
+                                                    <div class="reply text-darker float--right">
+                                                  
 
                                                   <!-- KURANG (TOMBOL INI MUNCUL BERDASARKAN YANG LOGIN) -->
                                                   <?php if($row['usr_id']==$_SESSION['id'])
@@ -234,6 +223,21 @@ require "header.php";
                                                   <?php } ?>
                                                   <!-- end of delete button -->
                                                 </div>
+                                                </div>
+
+                                                
+                                                <div class="content pt--8 fs--14">
+                                                    <p>
+                                                     <?php echo nl2br(strip_tags(htmlentities($commentdata)))?>
+                                                    </p>
+                                                     <h5 class="h5 pb--20 float--left" id="Replay">Total Replays (<?=$ReplayCount?>)</h5>
+                                                </div>
+                                                
+                                               
+                                                
+                                                <!-- reply button -->
+                                                  <p pid='<?=$commentID?>' id='ReplayButt-<?=$commentID?>' class="btn btn-default ReplayButt float--right">Replay</p>
+                                                  <!-- end reply button -->
                                                 <div id='ReplayViewer-<?=$commentID?>' class="col-sm-12 ReplayViewer">  <!-- replay cmt --></div>
                                             </div>
                                         </div>
