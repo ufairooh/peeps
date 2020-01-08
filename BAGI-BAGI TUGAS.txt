@@ -23,7 +23,7 @@ HOME
 7. tampilan form add bagusin				(m) SUDAH	
 
 POST-DETAIL
-1. reply comment					(m)
+1. reply comment					(m) 
 2. delete comment biar kembali ke halaman sebelumnya	(u) SUDAH
 3. tampilan delete comment di perkecil ke ujung kanan	(m) SUDAH
 4. icon delete tampil bersasarkan yang login		(m) SUDAH
@@ -44,7 +44,7 @@ DASHBOARD
 1. buat admin (CRUD)					(a)
 2. buat user (read, delete)				(a)
 3. buat post (CRUD)					(u)
-4. buat komen (read, delete)				(m)
+4. buat komen (read, delete)				(m) 
 		
 
 PROFILE
