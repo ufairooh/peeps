@@ -1,6 +1,9 @@
 <?php 
 include 'db.php';
 
+if ($_SESSION['id'] == false ){
+    header('location:loginusers.php');
+}
 
 require "header.php";
 ?>
@@ -137,145 +140,87 @@ require "header.php";
                             <div class="comment--list pt--40">
                                 <h4 class="h4 pb--20">
                                     <?php 
-                                        $comment_query = mysqli_query ($konek, "SELECT count(post_id) FROM `comment` where post_id='$id'") or die (mysqli_error());
+                                        $comment_query = mysqli_query ($konek, "SELECT count(id_post) FROM `comment` where id_post='$id'") or die (mysqli_error());
                                          while ($comment_row=mysqli_fetch_array($comment_query)){
-                                            $comment_count = $comment_row['count(post_id)'];
+                                            $comment_count = $comment_row['count(id_post)'];
                                     ?>
                                     <?php echo $comment_count; ?> Comments
                                     <?php
                                     }
                                     ?>
                                 </h4>
-    
+
                                 <ul class="comment--items nav">
                                     <li>
                                         <!-- Comment Item Start -->
                                         <!-- LIHAT KOMEN -->
+                                        <?php include "form_add_reply.php"; ?>
+<?php
+    $post_id="17"; //you have to give the post id... I have choosen just a randome id.
+      $usr_id="usr_id";  //you have to give the User id..
+    $konek= mysqli_connect("localhost", "root", "", "db");
+    $query="SELECT * ,UNIX_TIMESTAMP() - timeOfCmt AS TimeSpent from comment WHERE post_id='$post_id' ORDER BY post_id desc";
+    $sql=mysqli_query($konek,$query);
 
-                                        <?php
-                                            
-                                            $konek= mysqli_connect("localhost", "root", "", "db");
-                                            $query="SELECT * ,UNIX_TIMESTAMP() - timeOfCmt AS TimeSpent FROM comment LEFT JOIN users on users.id_user = comment.usr_id where post_id = '$id' order by timeOfCmt DESC";
-                                            $sql=mysqli_query($konek,$query);
+    if (mysqli_num_rows($sql)>0) {
+        while ($row = mysqli_fetch_assoc($sql)) {
+        $commentID= $row['id'];
+            $post_id1 = $row['post_id'];
+            $usr_id1 = $row['usr_id'];//****can featch usr info***
+            $commentdata = $row['commentdata'];
 
-                                            if (mysqli_num_rows($sql)>0) {
-                                                while ($row = mysqli_fetch_assoc($sql)) {
-                                                    $commentID= $row['id'];
-                                                    $post_id1 = $row['post_id'];
-                                                    $usr_id1 = $row['usr_id'];//****can featch usr info***
-                                                    $commentdata = $row['commentdata'];
-                                                    $username = $row['username'];
-                                                    $foto = $comment_row['foto'];
+        $query_R="SELECT * FROM replay WHERE commentID='$commentID'";
+        $sql_R=mysqli_query($konek,$query_R);
+        $ReplayCount=mysqli_num_rows($sql_R);
+?>
 
-                                                $query_R="SELECT * FROM replay WHERE commentID='$commentID'";
-                                                $sql_R=mysqli_query($konek,$query_R);
-                                                $ReplayCount=mysqli_num_rows($sql_R);
-                                        ?>
+          <div class="col-sm-12" style="min-height:40px;background-color:#E0E0E0;margin-top:5px;padding:0;">
 
-                                        <div class="comment--item mr--15 clearfix">
-                                            <div class="img float--left" data-overlay="0.3" data-overlay-color="primary">
-                                                <?php 
-                                									if ($foto == null){
-                                										echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
-                                									}
-                                									else{
-                                                  echo "<img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($foto)."'/>";
-									                               }?>
-                                            </div>
-                                            <div class="info ov--h">
-                                                <div class="header clearfix">
-                                                    <div class="meta float--left">
-                                                        <p class="fs--14 fw--700 text-darkest">
-                                                            <a href="#">
-                                                                <?php echo $username; ?>
-                                                            </a>
-                                                        </p>
+           <div class="col-sm-12" style="margin:0;padding:auto;background-color:#C8C8C8;">
+             <p>Commented By Rohan Layek , Date: 
+           <!-- TIME -->
+          <?php   
+              $days = floor($row['TimeSpent'] / (60 * 60 * 24));
+              $remainder = $row['TimeSpent'] % (60 * 60 * 24);
+              $hours = floor($remainder / (60 * 60));
+              $remainder = $remainder % (60 * 60);
+              $minutes = floor($remainder / 60);
+              $seconds = $remainder % 60;
+              if($days > 0)
+              echo date('F d, Y - H:i:sa', $row['timeOfCmt']);
+              elseif($days == 0 && $hours == 0 && $minutes == 0)
+              echo "A few seconds ago";       
+              elseif($days == 0 && $hours == 0)
+              echo $minutes.' minutes ago';
+          ?>  </p>
+           </div>
 
-                                                        <p>
-                                                            <i class="mr--10 fa fa-clock-o"></i>
-                                                            <span>
-                                                                <!-- TIME -->
-                                                                <?php   
-                                                                    $days = floor($comment_row['TimeSpent'] / (60 * 60 * 24));
-                                                                    $remainder = $comment_row['TimeSpent'] % (60 * 60 * 24);
-                                                                    $hours = floor($remainder / (60 * 60));
-                                                                    $remainder = $remainder % (60 * 60);
-                                                                    $minutes = floor($remainder / 60);
-                                                                    $seconds = $remainder % 60;
-                                                                    if($days > 0)
-                                                                    echo date('F d, Y - H:i:sa', $comment_row['timeOfCmt']);
-                                                                    elseif($days == 0 && $hours == 0 && $minutes == 0)
-                                                                    echo "A few seconds ago";       
-                                                                    elseif($days == 0 && $hours == 0)
-                                                                    echo $minutes.' minutes ago';
-                                                                ?>
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
+            <p style="color:black;padding:10px;margin:5px;"><?php echo nl2br(strip_tags(htmlentities($commentdata)))?></p>
 
-                                                <!-- KURANG (TOMBOL INI MUNCUL BERDASARKAN YANG LOGIN) -->
-                                                <?php if($comment_row['id_user']==$_SESSION['id'])
-                                                {
-                                                ?>
-                                                <a style="float:right;" href="proses_delete_comment.php?idc=<?php echo urlencode($id_comment); ?>&amp;id=<?php echo urlencode($id_post); ?>" title="Delete" class="btn-link" data-toggle="tooltip" data-placement="bottom">
-                                                    <img src="img/delete-cross-outline-interface-symbol.png" height="15" width="15">
-                                                </a>
-                                                <?php } ?>
-                                                
-                                                <div class="content pt--8 fs--14">
-                                                    <p>
-                                                        
-                                                    <?php echo nl2br(strip_tags(htmlentities($commentdata)))?>
-                                                    </p>
-                                                </div>
-                                                <?php include "form_add_reply.php"; ?>
-                                                <div class="col-sm-12" style="margin:0;padding:auto;background-color:#F5F5F5;">
-                                                  <p id="Replay" class="btn btn-primary btn-xs">Total Replays (<?=$ReplayCount?>)</p>
-                                                  <p pid='<?=$commentID?>' id='ReplayButt-<?=$commentID?>' class="btn btn-primary btn-xs ReplayButt">Replay</p>
-                                                  <div id='ReplayViewer-<?=$commentID?>' class="col-sm-12 ReplayViewer" style="margin:0;padding:auto;">  <!-- replay cmt --></div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <?php       
-                                          }
-                                          } else {
-                                            //$commentID = "0";
-                                            $query="SELECT * FROM comment";
-                                            $sql=mysqli_query($konek,$query);
-                                            while ($row = mysqli_fetch_assoc($sql)) {
-                                              $commentID = $row['id'];
-                                            //  echo "$commentID";
-                                            }
-                                            ?>
+          <div class="col-sm-12" style="margin:0;padding:auto;background-color:#F5F5F5;">
+            <p id="Replay" class="btn btn-primary btn-xs">Total Replays (<?=$ReplayCount?>)</p>
+            <p pid='<?=$commentID?>' id='ReplayButt-<?=$commentID?>' class="btn btn-primary btn-xs ReplayButt">Replay</p>
+            <div id='ReplayViewer-<?=$commentID?>' class="col-sm-12 ReplayViewer" style="margin:0;padding:auto;">  <!-- replay cmt --></div>
+          </div>
+          </div>
+  <?php       }
+    } else {
+      //$commentID = "0";
+      $query="SELECT * FROM comment";
+      $sql=mysqli_query($konek,$query);
+      while ($row = mysqli_fetch_assoc($sql)) {
+        $commentID = $row['id'];
+      //  echo "$commentID";
+      }
+      ?>
 
-                                          <script type="text/javascript">
-                                           $("#emptyCmt").html('<h2>Put A Comment.. Ask a Question.</h2>');
-                                          </script>
-                                        <?php  }
-                                        ?>
-                                            &nbsp;
-                                            <?php 
-                                            if ($u_id = $id){
-                                            ?>
-                                            <?php }else{ ?>
-                                                
-                                            <?php
-                                            } } ?>
-                                        <!-- Comment Item End -->
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Comment List End -->
+    <script type="text/javascript">
+     $("#emptyCmt").html('<h2>Put A Comment.. Ask a Question.</h2>');
+    </script>
+  <?php  }
+  ?>
 
-                            <!-- Comment Form Start -->
-                            
-                            <?php include "form_add_comment.php"; ?>
-                            <!-- Comment Form End -->
-                        </div>
-                    </div>
-                    <!-- Main Content End -->
+
 
 <script type="text/javascript">
 
@@ -353,9 +298,19 @@ if (CommentData.length >0) {
  }
 });
 
-</script>          
+</script>        
+                                        <!-- Comment Item End -->
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Comment List End -->
 
-
+                            <!-- Comment Form Start -->
+                            <?php include 'form_add_comment.php'; ?>
+                            <!-- Comment Form End -->
+                        </div>
+                    </div>
+                    <!-- Main Content End -->
 <?php
 require "footer.php";
 ?>

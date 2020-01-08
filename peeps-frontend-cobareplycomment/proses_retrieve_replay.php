@@ -1,34 +1,17 @@
-
 <?php
-include ('connect.php');
-if (isset($_POST['commentID'])) {
-  $commentID=$_POST['commentID'];?>
-  <div class="form-group" style="overflow:hidden;">
-    <label for="comment">Comment:</label>
-    <textarea id="ReplayCmt-<?=$commentID?>" class="form-control ReplayCmt" rows="2" style="max-width:100%;"></textarea>
-    <div class="col-sm-12" style="margin:2px;" id="plsTypecmt-<?=$commentID?>"></div>
-    <button pid="<?=$commentID?>" id="ReplayCmtButt-<?=$commentID?>" type="submit" class="btn btn-warning ReplayCmtButt">comment</button>
-  </div>
-
-<?php
-
-//  $con= mysqli_connect("localhost", "root", "", "comment");
-  $query_R="SELECT * ,UNIX_TIMESTAMP() - replaytime AS TimeSpent FROM replay WHERE commentID='$commentID'";
-  $sql_R=mysqli_query($konek,$query_R);
-
-  if (mysqli_num_rows($sql_R)>0) {
-    while ($row_R = mysqli_fetch_assoc($sql_R)) {
-      $Rid= $row_R['id'];
-      $replayUserId = $row_R['replayUserId'];
-      $commentID = $row_R['commentID'];//****can featch usr info***
-      $replaydata = $row_R['replaydata'];
-      $replytime = $row_R['replaytime'];
+    $id = isset($_GET['id']) ? $_GET['id'] : '';
+    $konek= mysqli_connect("localhost", "root", "", "db");
+    $query="SELECT * ,UNIX_TIMESTAMP() - replaytime AS TimeSpent FROM replay JOIN comment on comment.usr_id = replay.replayUserId  join users on users.id_user=replay.replayUserId";
+    $sql=mysqli_query($konek,$query);
+    while ($row_R = mysqli_fetch_assoc($sql)) {
+     $username = $row_R['username'];
+     $replaydata = $row_R['replaydata'];
+   }
 ?>
-
-      <div class="col-sm-12" style="min-height:40px;background-color:#E0E0E0;margin-top:5px;padding:0;">
+<div class="col-sm-12" style="min-height:40px;background-color:#E0E0E0;margin-top:5px;padding:0;">
 
        <div class="col-sm-12" style="margin:0;padding:auto;background-color:#C8C8C8;">
-         <p>Commented By Rohan Layek , 
+         <p>Commented By  <?php echo $username; ?>, 
           <?php
               $days = floor($row_R['TimeSpent'] / (60 * 60 * 24));
               $remainder = $row_R['TimeSpent'] % (60 * 60 * 24);
@@ -48,11 +31,5 @@ if (isset($_POST['commentID'])) {
         <p style="color:black;padding:10px;margin:5px;"><?php echo nl2br($replaydata)?></p>
 
        <div class="col-sm-12" style="margin:0;padding:auto;background-color:#F5F5F5;">
-       </div>
-      </div>
-
-<?php
-     }
-  }
-}
-?>
+    </div>
+</div>

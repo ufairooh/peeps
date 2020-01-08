@@ -102,7 +102,7 @@ require "header.php";
 
                                 <div class="activity--content">
 								<div class="link--embed">
-                                        <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
+                                        <a href="view_post_detail_3.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">
                                             <?php 
                                                 echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['gambar'])."' style='height: 100; weight:100;'/></center>";

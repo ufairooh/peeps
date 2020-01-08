@@ -1,6 +1,10 @@
 DEADLINE MINGGU JAM 12 SIANG.
 PAKE FOLDER YANG PEEPS-FRONTEND, PEEPS-BACKEND
 
+HAPUS DATA (biar kalo parentkeynya kehapus, childnya juga)
+1. hapus post						(m) SUDAH
+2. hapus komen						(m) SUDAH
+3. hapus user						(m) SUDAH
 
 REQUEST UFA
 1. Mal itu kan gua tombol edit sama delete 		(m) SUDAH	
