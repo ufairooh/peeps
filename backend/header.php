@@ -65,9 +65,14 @@ $nama=$_GET['id'];
                     <nav class="navbar-sidebar">
                          <ul class="list-unstyled navbar__list">
                          <li>Halo Admin <?php echo "".$row['nama']; ?></li>
-                            <li><a href="tablePost.php<?php echo '?id='.$_SESSION['id']; ?>">Post</a></li>
-        <li><a href="tableUser.php<?php echo '?id='.$_SESSION['id']; ?>">User</a></li>
-		<li><a href="tableAdmin.php<?php echo '?id='.$_SESSION['id']; ?>">Admin</a></li>
+                         <li><a href="tablePost.php<?php echo '?id='.$_SESSION['id']; ?>">Post</a></li>
+                         <li><a href="tableComment.php<?php echo '?id='.$_SESSION['id']; ?>">Comment</a></li>
+                         <li><a href="tableReplay.php<?php echo '?id='.$_SESSION['id']; ?>">Replay</a></li>
+                         <li><a href="tableUser.php<?php echo '?id='.$_SESSION['id']; ?>">User</a></li>
+                         <li><a href="tableAdmin.php<?php echo '?id='.$_SESSION['id']; ?>">Admin</a></li>
+
+                            
+                    		
                         </ul>
                     </nav>
                     <?php } ?>

@@ -56,22 +56,9 @@ if($_SESSION['role'] != ""){?>
 												<td><?php 
                                                 echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['gambar'])."'/></center>";
                                             ?></td>
-                                                <td><p><?php               
-                                            $days = floor($row['TimeSpent'] / (60 * 60 * 24));
-                                            $remainder = $row['TimeSpent'] % (60 * 60 * 24);
-                                            $hours = floor($remainder / (60 * 60));
-                                            $remainder = $remainder % (60 * 60);
-                                            $minutes = floor($remainder / 60);
-                                            $seconds = $remainder % 60;
-                                            if($days > 0)
-                                            echo date('F d, Y - H:i:sa', $row['tanggal']);
-                                            elseif($days == 0 && $hours == 0 && $minutes == 0)
-                                            echo "A few seconds ago";       
-                                            elseif($days == 0 && $hours == 0)
-                                            echo $minutes.' minutes ago';
-                                            elseif($days == 0)
-                                            echo $hours.' hours ago';
-                                        ?></td>
+                                                <td>
+                                                    <?php echo date('F d, Y - H:i:sa', $row['tanggal']);?>
+                                                </td>
                                                 <td>
 												<div class='table-data-feature'>
 												<?php if($row['id_user']==$_SESSION['id'])
@@ -82,7 +69,7 @@ if($_SESSION['role'] != ""){?>
                                                         </button>
 											<?php }?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                                            <a class="btn btn-light-green" href="proses_delete_post.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-delete'></i></a>
+                                                            <a class="btn btn-light-green" href="proses_delete_post.php<?php echo '?id='.$id; ?>" onclick="return confirm('Are you sure want to delete post?')"><i class='zmdi zmdi-delete'></i></a>
                                                         </button>
                                                     </div>
 													</td>

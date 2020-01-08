@@ -1,6 +1,25 @@
 DEADLINE MINGGU JAM 12 SIANG.
 PAKE FOLDER YANG PEEPS-FRONTEND, PEEPS-BACKEND
 
+HAPUS DATA (biar kalo parentkeynya kehapus, childnya juga)
+1. hapus post						(m) SUDAH
+2. hapus komen						(m) SUDAH
+3. hapus user						(m) SUDAH
+
+
+ALERT KALO DELETE
+FRONT-END
+1. post-detailed (komen, post)				(m) SUDAH
+BACK-END
+1. post, comment, replay, user, admin			(m) SUDAH
+
+ALERT KALO EDIT BERHASIL
+FRONT-END
+1. post-detailed (post)		
+BACK-END
+1. post
+4. user
+5. admin	
 
 REQUEST UFA
 1. Mal itu kan gua tombol edit sama delete 		(m) SUDAH	
@@ -18,12 +37,12 @@ HOME
 2. autosearch pake js					(a)
 3. hapus member						(m) SUDAH
 4. kotaknya ketengahin karena ga ada iklan		(m) SUDAH
-5. paging post						(m) 
+5. paging post						(m) SORRY SIBUK
 6. tambahin kategori					(m) SUDAH
 7. tampilan form add bagusin				(m) SUDAH	
 
 POST-DETAIL
-1. reply comment					(m)
+1. reply comment					(m) SUDAH
 2. delete comment biar kembali ke halaman sebelumnya	(u) SUDAH
 3. tampilan delete comment di perkecil ke ujung kanan	(m) SUDAH
 4. icon delete tampil bersasarkan yang login		(m) SUDAH
@@ -47,7 +66,9 @@ DASHBOARD
 4. buat post (CRUD)					(u) SUDAH
 5. buat komen (read, delete)				(m) SUDAH
 6. autosearch pake js					(u) SUDAH
-		
+7. benerin tanggal di comment				(m) SUDAH
+6. buat reply (read, delete)				(m) SUDAH
+	
 
 PROFILE
 1. bikin page profile yang isinya			

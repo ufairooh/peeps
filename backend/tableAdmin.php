@@ -69,7 +69,7 @@ if($_SESSION['role'] != ""){?>
                                                         </button>
 											<?php }?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                                            <a class="btn btn-light-green" href="proses_delete_user.php<?php echo '?id='.$row['id_user']; ?>"><i class='zmdi zmdi-delete'></i></a>
+                                                            <a class="btn btn-light-green" href="proses_delete_user.php<?php echo '?id='.$row['id_user']; ?>" onclick="return confirm('Are you sure want to delete comment?')"><i class='zmdi zmdi-delete'></i></a>
                                                         </button>
                                                     </div>
 													</td>
