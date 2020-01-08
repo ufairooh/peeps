@@ -1,45 +1,17 @@
-<?php 
+<?php
 include 'db.php';
 
 if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
     header('location:./peepsloginusers.php');
 }
-
-require "header.php";
-if($_SESSION['role'] != ""){?>
-<h3 class='title-5 m-b-35'>Post Data</h3>
-                                <div class='table-data__tool'>
-                                    <div class='table-data__tool-right'>
-                                        <a href='postAdmin.php'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
-                                            <i class='zmdi zmdi-plus'></i>Input new post</button>  </a>                                      
-                                    </div>
-                                </div>
-                                <div class='table-responsive m-b-40'>
-                                    <table class='table table-data3'>
-                                        <thead>
-                                            <tr>
-                                                <th>author</th>
-                                                <th>post</th>
-                                                <th>Category</th>
-                                                <th>Deskripsi</th>
-												<th>gambar</th>
-                                                <th>date created</th>
-                                                <th>action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tampils">
-										<?php
-                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC";
-                        $result = mysqli_query($konek, $query);
-                        if (!$result) {
-                            printf("Error: %s\n", mysqli_error($konek));
-                            exit();
-                        }
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            $id = $row['id_post']; 
-                    ?>
-                                            <tr>
+if (isset($_POST['search'])) {
+  require_once 'connect.php';
+  $search = $_POST['search'];
+  $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user WHERE judul LIKE '%".$search."%' OR username LIKE '%".$search."%' OR category LIKE '%".$search."%' order by id_post DESC");
+  while ($row = mysqli_fetch_array($query)) {
+	  $id = $row['id_post']; 
+ ?>
+<tr>
                                                 
                                                 <td><?php
                                                 echo"<p>".$row['username']."</p>"
@@ -88,30 +60,5 @@ if($_SESSION['role'] != ""){?>
 													</td>
 
                                             </tr>
-											<?php 
-								}
-								?>
-                                        </tbody>
-                                    </table>
-                                </div>
-								<script type="text/javascript">
-    $(document).ready( function() {
-      $('#search').on('keyup', function() {
-        $.ajax({
-          type: 'POST',
-          url: 'searchPost.php',
-          data: {
-            search: $(this).val()
-          },
-          cache: false,
-          success: function(data) {
-            $('#tampils').html(data);
-          }
-        });
-      });
-    });
-  </script>
-								<?php	
-}else{
-	header("Location: ../peeps-frontend/index.php");
+<?php }
 }?>

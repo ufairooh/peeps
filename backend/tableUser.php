@@ -22,7 +22,7 @@ if($_SESSION['role'] != ""){?>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tampils">
 										<?php
                         $query="SELECT * from users where role='user'";
                         $result = mysqli_query($konek, $query);
@@ -70,6 +70,23 @@ if($_SESSION['role'] != ""){?>
                                         </tbody>
                                     </table>
                                 </div>
+								<script type="text/javascript">
+    $(document).ready( function() {
+      $('#search').on('keyup', function() {
+        $.ajax({
+          type: 'POST',
+          url: 'searchAdmin.php',
+          data: {
+            search: $(this).val()
+          },
+          cache: false,
+          success: function(data) {
+            $('#tampils').html(data);
+          }
+        });
+      });
+    });
+  </script>
 								<?php	
 }else{
 	header("Location: ../peeps-frontend/index.php");
