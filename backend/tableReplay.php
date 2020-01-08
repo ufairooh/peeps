@@ -1,8 +1,8 @@
 <?php 
 include 'db.php';
 
-if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
-    header('location:./peepsloginusers.php');
+if ($_SESSION['id'] == false || strcmp($_SESSION['role'], 'user') == 0 ){
+    header('location:../peeps-frontend/loginusers.php');
 }
 
 require "header.php";
@@ -67,7 +67,7 @@ if($_SESSION['role'] != ""){?>
       $('#search').on('keyup', function() {
         $.ajax({
           type: 'POST',
-          url: 'searchComment.php',
+          url: 'searchReply.php',
           data: {
             search: $(this).val()
           },

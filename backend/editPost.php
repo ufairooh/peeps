@@ -8,7 +8,7 @@ if ($_SESSION['id'] == false ){
 
 if($_SESSION['role'] != ""){
 
-$id=htmlspecialchars(@$_GET['id']);
+$id=htmlspecialchars(@$_GET['idpost']);
 $query="SELECT * FROM post WHERE id_post='$id'";
 $execute=$konek->query($query);
 if ($execute->num_rows > 0){

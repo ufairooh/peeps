@@ -112,6 +112,7 @@ $nama=$_GET['id'];
         </div>
         <?php } ?>
     </div>
+	</div>
     <div id="main-body">
     <section class="page--wrapper pt--80 pb--20 " style="margin-top: -30px;">
         <div class="container">

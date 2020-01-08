@@ -1,8 +1,8 @@
 <?php 
 include 'db.php';
 
-if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
-    header('location:./peepsloginusers.php');
+if ($_SESSION['id'] == false || strcmp($_SESSION['role'], 'user') == 0 ){
+    header('location:../peeps-frontend/loginusers.php');
 }
 
 require "header.php";
@@ -65,7 +65,7 @@ if($_SESSION['role'] != ""){?>
                                             {
                                             ?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>
-                                                            <a class="btn btn-light-green" href="editPost.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-edit'></i></a>
+                                                            <a class="btn btn-light-green" href="editPost.php<?php echo '?idpost='.$id; ?>&id=<?php echo $row['id_user']; ?>"><i class='zmdi zmdi-edit'></i></a>
                                                         </button>
 											<?php }?>
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
