@@ -1,11 +1,11 @@
 <?php 
 include 'db.php';
-
+require "header.php";
 if ($_SESSION['id'] == false ){
     header('location:loginusers.php');
 }
 
-require "header.php";
+
 if($_SESSION['role'] != ""){
 
 $id=htmlspecialchars(@$_GET['id']);
@@ -14,9 +14,10 @@ $execute=$konek->query($query);
 if ($execute->num_rows > 0){
     $data=$execute->fetch_array(MYSQLI_ASSOC);
 }else{
-	 header('location:tablePost.php');
+	 header('location:tablePost.php?id='.$id.'');
 }
 ?>
+
 <div class='card'>
                                     <div class='card-header'>
                                         <strong>Post</strong>
@@ -73,7 +74,7 @@ if ($execute->num_rows > 0){
                                     </div>
                                     <div class='card-footer'>
                                         <input class ='btn btn-primary btn-sm' name='submit' type='submit' value='Edit' required=''>
-                                        <a href='tablePost.php'><button type='button' class='btn btn-secondary btn-sm'>
+                                        <a href="tablePost.php<?php echo '?id='.$_SESSION['id']; ?>"><button type='button' class='btn btn-secondary btn-sm'>
                                              Back
                                         </button></a>
                                     </div>

@@ -57,7 +57,7 @@ if($_SESSION['role'] != ""){?>
                                     </div>
                                     <div class='card-footer'>
                                         <input class ='btn btn-primary btn-sm' name='submit' type='submit' value='Post' required=''>
-                                        <a href='tablePost.php'><button type='button' class='btn btn-secondary btn-sm'>
+                                        <a href="tablePost.php<?php echo '?id='.$_SESSION['id']; ?>"><button type='button' class='btn btn-secondary btn-sm'>
                                              Back
                                         </button></a>
                                     </div>

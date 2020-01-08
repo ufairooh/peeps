@@ -1,8 +1,7 @@
 <?php
-require "header_user.php";
+require "header.php";
+$id_user=$_GET['id'];
 ?>
-<br><br>
- <!-- <img src="img/desai.jpg" style="height: 150px; width: 150px; border-radius: 50%; margin-top: -200px;"> -->
     <div class="main--content" data-trigger="stickyScroll">
     <?php
                 include 'form_add_post.php';
@@ -20,7 +19,7 @@ require "header_user.php";
                 <div class="filter--link float--right">
                     <div class="header--search style--1" data-form="validate">
                         <form action="#">
-                            <input type="text" name="search" placeholder="Search here..." class="form-control form-sm" required  style="border-color: #e5e5e5;  color: black;">
+                            <input type="text" name="search" placeholder="Search here..." class="form-control form-sm" required  style="border-color: #e5e5e5">
 
                             <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
                         </form>
@@ -45,7 +44,7 @@ require "header_user.php";
                 <!-- Activity Items Start -->
                 <ul class="activity--items nav">
                     <?php
-                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where post.id_user=".$_GET['id']." order by id_post DESC";
+                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user where post.id_user=".$id_user." order by id_post DESC";
                         $result = mysqli_query($konek, $query);
                         if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
@@ -62,6 +61,7 @@ require "header_user.php";
                         <div class="activity--item">
                             <div class="activity--avatar">
                                 <a href="member-activity-personal.html">
+                                    
                                     <?php 
                                     if ($row['foto'] == null){
                                         echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
@@ -74,9 +74,9 @@ require "header_user.php";
 
                             <div class="activity--info fs--14">
                                 <div class="activity--header">
-                                    <a href="index_user.php<?php echo '?id='.$_SESSION['id']; ?>"><p>
+                                    <p>
                                         <?php echo "".$row['username'].""; ?>
-                                    </p></a>
+                                    </p>
                                 </div>
 
                                 <div class="activity--meta fs--12">
@@ -102,7 +102,7 @@ require "header_user.php";
                                 </div>
 
                                 <div class="activity--content">
-                                <div class="link--embed">
+                                    <div class="link--embed">
                                         <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">
                                             <?php 
@@ -148,19 +148,15 @@ require "header_user.php";
 function readURL(input) {
 if (input.files && input.files[0]) {
     var reader = new FileReader();
-
     reader.onload = function (e) {
         $('#blah')
             .attr('src', e.target.result)
             .width(500)
             .height(200);
     };
-
     reader.readAsDataURL(input.files[0]);
 }
 }
-
-
 </script>
 <?php
 require "footer.php";

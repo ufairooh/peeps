@@ -7,13 +7,8 @@ if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['rol
 
 require "header.php";
 if($_SESSION['role'] != ""){?>
-<h3 class='title-5 m-b-35'>Admin</h3>
-                                <div class='table-data__tool'>
-                                    <div class='table-data__tool-right'>
-                                        <a href='addAdmin.php<?php echo '?id='.$_SESSION['id']; ?>'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
-                                            <i class='zmdi zmdi-plus'></i>Input new admin</button>  </a>                                      
-                                    </div>
-                                </div>
+<h3 class='title-5 m-b-35'>User</h3>
+                                
                                 <div class='table-responsive m-b-40'>
                                     <table class='table table-data3'>
                                         <thead>
@@ -29,7 +24,7 @@ if($_SESSION['role'] != ""){?>
                                         </thead>
                                         <tbody id="tampils">
 										<?php
-                        $query="SELECT * from users where role='admin'";
+                        $query="SELECT * from users where role='user'";
                         $result = mysqli_query($konek, $query);
                         if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
@@ -61,13 +56,7 @@ if($_SESSION['role'] != ""){?>
                                             ?></td>
                                                 <td>
 												<div class='table-data-feature'>
-												<?php if($row['id_user']==$_SESSION['id'])
-                                            {
-                                            ?>
-                                                        <button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>
-                                                            <a class="btn btn-light-green" href="editAdmin.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-edit'></i></a>
-                                                        </button>
-											<?php }?>
+												
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
                                                             <a class="btn btn-light-green" href="proses_delete_user.php<?php echo '?id='.$row['id_user']; ?>"><i class='zmdi zmdi-delete'></i></a>
                                                         </button>

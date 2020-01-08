@@ -1,4 +1,5 @@
 <?php
+include 'db.php';
 require 'connect.php';
 require 'class/crud.php';
 $crud=new crud($konek);
@@ -26,7 +27,7 @@ switch ($op){
 	else{
 		$query="UPDATE post SET judul='$judul', deskripsi='$deskripsi', category='$category' where id_post='$id_post'";
         $crud->addData($query,$konek);
-	header("Location: tablePost.php");}
+	header("Location: tablePost.php?id=".$_SESSION['id']."");
 	
 	break;
 	

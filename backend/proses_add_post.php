@@ -1,4 +1,5 @@
 <?php
+include 'db.php';
 require 'connect.php';
 require 'class/crud.php';
 $crud=new crud($konek);
@@ -20,7 +21,7 @@ switch ($op){
     case 'post'://tambah data barang
         $query="INSERT INTO post (judul, deskripsi, gambar, tanggal, id_user, category) VALUE ('$judul', '$deskripsi', '$image', '".strtotime(date("Y-m-d h:i:sa"))."', '$id_user','$category')";
         $crud->addData($query,$konek);
-		header("Location: tablePost.php");
+		header("Location: tablePost.php?id=".$_SESSION['id']."");
     break;
 	
 }

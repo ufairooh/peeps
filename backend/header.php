@@ -1,5 +1,6 @@
 <?php
 require 'connect.php';
+$nama=$_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -51,13 +52,25 @@ require 'connect.php';
                     </a>
                 </div>
                 <div class="menu-sidebar__content js-scrollbar1">
+                    <?php $query1="SELECT * FROM users WHERE id_user =".$nama."";
+                        $result1 = mysqli_query($konek, $query1);
+                        if (!$result1) {
+                            printf("Error: %s\n", mysqli_error($konek));
+                            exit();
+                        }
+                        while ($row = mysqli_fetch_array($result1))
+                        {
+                            $id = $row['id_user']; 
+                    ?>
                     <nav class="navbar-sidebar">
                          <ul class="list-unstyled navbar__list">
-                            <li><a href="tablePost.php">Post</a></li>
-							<li><a href="tableComment.php">Comment</a></li>
-		<li><a href="tableAdmin.php">User</a></li>
+                         <li>Halo Admin <?php echo "".$row['nama']; ?></li>
+                            <li><a href="tablePost.php<?php echo '?id='.$_SESSION['id']; ?>">Post</a></li>
+        <li><a href="tableUser.php<?php echo '?id='.$_SESSION['id']; ?>">User</a></li>
+		<li><a href="tableAdmin.php<?php echo '?id='.$_SESSION['id']; ?>">Admin</a></li>
                         </ul>
                     </nav>
+                    <?php } ?>
                 </div>
 </aside>
 
