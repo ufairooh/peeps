@@ -54,8 +54,8 @@ require 'connect.php';
                     <nav class="navbar-sidebar">
                          <ul class="list-unstyled navbar__list">
                             <li><a href="tablePost.php">Post</a></li>
-        <li><a href="tableUser.php">User</a></li>
-		<li><a href="tableAdmin.php">Admin</a></li>
+							<li><a href="tableComment.php">Comment</a></li>
+		<li><a href="tableAdmin.php">User</a></li>
                         </ul>
                     </nav>
                 </div>

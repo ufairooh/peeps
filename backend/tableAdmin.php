@@ -7,7 +7,7 @@ if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['rol
 
 require "header.php";
 if($_SESSION['role'] != ""){?>
-<h3 class='title-5 m-b-35'>Admin</h3>
+<h3 class='title-5 m-b-35'>User</h3>
                                 <div class='table-data__tool'>
                                     <div class='table-data__tool-right'>
                                         <a href='addAdmin.php'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
@@ -24,12 +24,13 @@ if($_SESSION['role'] != ""){?>
                                                 <th>Gender</th>
 												<th>hobi</th>
                                                 <th>foto profil</th>
+												<th>role</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tampils">
 										<?php
-                        $query="SELECT * from users where role='admin'";
+                        $query="SELECT * from users";
                         $result = mysqli_query($konek, $query);
                         if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
@@ -59,6 +60,9 @@ if($_SESSION['role'] != ""){?>
 												<td><?php 
                                                 echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['foto'])."'/></center>";
                                             ?></td>
+											<td><?php
+                                                echo"<p>".$row['role']."</p>"
+												?></td>
                                                 <td>
 												<div class='table-data-feature'>
 												<?php if($row['id_user']==$_SESSION['id'])

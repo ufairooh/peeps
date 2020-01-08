@@ -30,6 +30,9 @@ if (isset($_POST['search'])) {
 												<td><?php 
                                                 echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['foto'])."'/></center>";
                                             ?></td>
+											<td><?php
+                                                echo"<p>".$row['role']."</p>"
+												?></td>
                                                 <td>
 												<div class='table-data-feature'>
 												<?php if($row['id_user']==$_SESSION['id'])

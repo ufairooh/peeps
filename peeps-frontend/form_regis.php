@@ -65,9 +65,9 @@
 			<i class="fa fa-envelope" aria-hidden="true"></i>
 		</span>
     <select id="gender" name="gender" class="dropdown-select input100" style="font-size: 16px; font-style: bold; "  required>
-      <option value="0" >Gender</option>
-      <option value="1" >Laki-Laki</option>
-      <option value="2" >Perempuan</option>
+      <option selected hidden>Gender</option>
+      <option value="Laki-Laki" >Laki-Laki</option>
+      <option value="Perempuan" >Perempuan</option>
     </select>
   </div>
 

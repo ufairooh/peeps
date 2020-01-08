@@ -45,7 +45,7 @@ DASHBOARD
 2. buat admin (read,deletE)				(u) SUDAH
 3. buat user (read, delete)				(u) SUDAH
 4. buat post (CRUD)					(u) SUDAH
-5. buat komen (read, delete)				(m)
+5. buat komen (read, delete)				(m) SUDAH
 6. autosearch pake js					(u) SUDAH
 		
 

@@ -7,24 +7,22 @@ if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['rol
 
 require "header.php";
 if($_SESSION['role'] != ""){?>
-<h3 class='title-5 m-b-35'>User</h3>
+<h3 class='title-5 m-b-35'>Comment</h3>
                                 
                                 <div class='table-responsive m-b-40'>
                                     <table class='table table-data3'>
                                         <thead>
                                             <tr>
-                                                <th>Nama</th>
-                                                <th>Username</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
-												<th>hobi</th>
-                                                <th>foto profil</th>
+                                                <th>post</th>
+                                                <th>User</th>
+                                                <th>Comment</th>
+                                                <th>date created</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tampils">
 										<?php
-                        $query="SELECT * from users where role='user'";
+                        $query="SELECT * from comment LEFT JOIN users on users.id_user = comment.usr_id JOIN post on post.id_post = comment.post_id order by id DESC";
                         $result = mysqli_query($konek, $query);
                         if (!$result) {
                             printf("Error: %s\n", mysqli_error($konek));
@@ -32,33 +30,25 @@ if($_SESSION['role'] != ""){?>
                         }
                         while ($row = mysqli_fetch_array($result))
                         {
-                             
+							$id = $row['id'];
                     ?>
                                             <tr>
                                                 
                                                 <td><?php
-                                                echo"<p>".$row['nama']."</p>"
+                                                echo"<p>".$row['judul']."</p>"
 												?></td>
                                                 <td><?php
                                                 echo"<p>".$row['username']."</p>"
 												?></td>
                                                 <td><?php
-                                                echo"<p>".$row['email']."</p>"
+                                                echo"<p>".$row['commentdata']."</p>"
 												?></td>
-												<td><?php
-                                                echo"<p>".$row['gender']."</p>"
-												?></td>
-                                                <td><?php
-                                                echo"<p>".$row['hobi']."</p>"
-												?></td>
-												<td><?php 
-                                                echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['foto'])."'/></center>";
-                                            ?></td>
+                                                <td></td>
                                                 <td>
 												<div class='table-data-feature'>
 												
                                                         <button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                                            <a class="btn btn-light-green" href="proses_delete_user.php<?php echo '?id='.$row['id_user']; ?>"><i class='zmdi zmdi-delete'></i></a>
+                                                            <a class="btn btn-light-green" href="proses_delete_comment.php<?php echo '?id='.$id; ?>"><i class='zmdi zmdi-delete'></i></a>
                                                         </button>
                                                     </div>
 													</td>
@@ -75,7 +65,7 @@ if($_SESSION['role'] != ""){?>
       $('#search').on('keyup', function() {
         $.ajax({
           type: 'POST',
-          url: 'searchAdmin.php',
+          url: 'searchComment.php',
           data: {
             search: $(this).val()
           },
