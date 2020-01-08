@@ -159,7 +159,7 @@ body {
     color: #999;
     font-family: "Roboto", sans-serif;
     font-size: 12px;
-    line-height: 22px;
+    line-height: 30px;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -173,6 +173,7 @@ ul:last-child {
 }
 
 img,
+
 .nav > li > a > img { /* RESPONSIVE IMAGES */
     max-width: 100%;
     height: auto;
@@ -682,6 +683,10 @@ a:focus {
     margin-bottom: 20px;
 }
 
+.nama{
+    color: #fff;
+}
+
 .form-control {
     height: 40px;
     padding: 8px 15px;
@@ -998,7 +1003,7 @@ label > span {
 .text-lightest { color: #fefefe; }
 .text-gray { color: #aaa; }
 .text-lightgray { color: #ccc; }
-.text-white { color: #fff; }
+.text-white { color: #fff; font-size: 30px; }
 .text-primary { color: #1da1f2; }
 
 /* 2.6. BACKGROUND IMAGE */

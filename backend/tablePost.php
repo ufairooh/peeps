@@ -10,7 +10,7 @@ if($_SESSION['role'] != ""){?>
 <h3 class='title-5 m-b-35'>Post Data</h3>
                                 <div class='table-data__tool'>
                                     <div class='table-data__tool-right'>
-                                        <a href='postAdmin.php'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
+                                        <a href='postAdmin.php<?php echo '?id='.$_SESSION['id']; ?>'><button class='au-btn au-btn-icon au-btn--green au-btn--small'>
                                             <i class='zmdi zmdi-plus'></i>Input new post</button>  </a>                                      
                                     </div>
                                 </div>

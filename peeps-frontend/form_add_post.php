@@ -17,6 +17,7 @@
 
                     <div class="contact--subtitle pt--15">
                         <h4 class="h6 fw--400 text-darkest">and lets find a lot of friend!!!</h4>
+                        <br>
                     </div>
 
                     
@@ -47,11 +48,11 @@
                                     <textarea name='message' placeholder='Message *' class='form-control' required></textarea>
                                 </div>
                             </div>
-
+                            <div style="align-items: center;">
                             <div class='col-xs-12'>
 
                                 <div class='image-upload'>
-                                    <label for='file-input'>
+                                    <label for='file-input' style="color: black;">
                                         Choose Image * <img src='picture.png' height='30px' width='40px'/>
                                     </label>
                                     <input name='image' id='file-input' type='file' onchange='readURL(this);' />
@@ -65,7 +66,7 @@
                                 <button name='submit' type='submit' class='btn btn-primary mt--10'>Send Message</button>
                             </div>
                         </div>
-
+                        </div>
                         <div class='status'></div>
                     
 

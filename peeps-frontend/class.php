@@ -23,12 +23,13 @@ class Main
 					if($data['role']=='user'){
 					$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
-					header('location:index.php?');}
+					$_SESSION['role'] = $data['role'];
+					header('location:index.php?role='.$data['role'].'');}
 					else{
 						$_SESSION['id'] = $data['id_user'];
 					$_SESSION['username'] = $data['username'];
 					$_SESSION['role'] = $data['role'];
-					header('location:../backend/tablePost.php');
+					header('location:../backend/tablePost.php?id='.$data['id_user'].'');
 					}
 				}else{
 					    $message = "Maaf anda tidak bisa login, silakan buat akun terlebih dahulu :)";
