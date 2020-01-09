@@ -12,8 +12,9 @@ require "header.php";
             <h2 class="h2">Discussion</h2>
         </div>
     </div>
-    <!-- Section Title End -->
-    <div class='main--content-inner drop--shadow'>
+    <!-- Section Title End --><center>
+    <div class='main--content-inner drop--shadow' style="width:85%; ">
+
                             <!-- Post Item Start -->
 
                             <?php
@@ -44,7 +45,7 @@ require "header.php";
                                 <div class="post--img">
                                     <a href="blog-details.html">
                                         <?php 
-                                            echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($post_row['gambar'])."' height ='200' width='1200'/></center>";
+                                            echo "<center><img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($post_row['gambar'])."' height ='auto' width='70%'/></center>";
                                         ?>
                                     </a>
                                 </div>
@@ -269,7 +270,9 @@ require "header.php";
                                             }} } ?>
                                         <!-- Comment Item End -->
                             <!-- Comment Form End -->
-                        </div>
+ 
+                        </div><!-- iniending div yg atas -->
+                        </center>
                     </div>
                     <!-- Main Content End -->
 
