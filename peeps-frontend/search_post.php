@@ -1,60 +1,16 @@
 <?php
-require "header.php";
-?>
-    <div class="main--content" data-trigger="stickyScroll">
-<br><br>
-	<?php
-        include 'form_add_post.php';
-    ?>
+include 'db.php';
 
-        <!-- Section Title Start -->
-                <div class="section--title text-center" style="margin-top: 0">
-                    <div class="title lined">
-                        <h2 class="h2">Today Activity</h2>
-                    </div>
-                </div>
-        <!-- Section Title End -->
-        <div class="main--content-inner drop--shadow">
-            <!-- Filter Nav Start -->
-            <div class="filter--nav pb--60 clearfix">
-                <div class="filter--link float--right">
-                    <div class="header--search style--1" data-form="validate">
-                    <form action='' method='POST'>
-                            <input type="text" id="searching" name="searching" placeholder="Search here..." class="form-control form-sm" required  style="border-color: #e5e5e5; color: black;">
-
-                            <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="filter--options float--left">
-                    <label>
-                        <span class="fs--14 ff--primary fw--500 text-darker">Show By :</span>
-
-                        <select name="activityfilter" class="form-control form-sm" data-trigger="selectmenu">
-                            <option value="everything" selected>— Everything —</option>
-                            <option value="new-members">New Members</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <!-- Filter Nav End -->
-
-            <!-- Activity List Start -->
-            <div class="activity--list">
-                <!-- Activity Items Start -->
-                <ul id="tampils" class="activity--items nav">
-                    <?php
-                        $query="SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user order by id_post DESC";
-                        $result = mysqli_query($konek, $query);
-                        if (!$result) {
-                            printf("Error: %s\n", mysqli_error($konek));
-                            exit();
-                        }
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            $id = $row['id_post']; 
-                    ?>
+if ($_SESSION['id'] == false && $_SESSION['username'] == false && $_SESSION['role'] == ""){
+    header('location:./peepsloginusers.php');
+}
+if (isset($_POST['search'])) {
+  require_once 'connect.php';
+  $search = $_POST['search'];
+  $query = mysqli_query($konek, "SELECT *,UNIX_TIMESTAMP() - tanggal AS TimeSpent from post LEFT JOIN users on users.id_user = post.id_user WHERE judul LIKE '%".$search."%' OR username LIKE '%".$search."%' OR category LIKE '%".$search."%' order by id_post DESC");
+  while ($row = mysqli_fetch_array($query)) {
+	  $id = $row['id_post']; 
+ ?>
 
                     <li>
                         <input type="text" hidden="true" value="<?php echo $no++; ?>"/>
@@ -63,12 +19,12 @@ require "header.php";
                             <div class="activity--avatar">
                                 <a href="member-activity-personal.html">
                                     <?php 
-									if ($row['foto'] == null){
-										echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
-									}
-									else{
+                                    if ($row['foto'] == null){
+                                        echo "<img src='img/activity-img/avatar-05.jpg' alt=''>";
+                                    }
+                                    else{
                                                 echo "<img class='card-img-top' src= 'data:image/jpeg;base64,".base64_encode($row['foto'])."'/>";
-									}?>
+                                    }?>
                                 </a>
                             </div>
 
@@ -102,7 +58,7 @@ require "header.php";
                                 </div>
 
                                 <div class="activity--content">
-								<div class="link--embed">
+                                <div class="link--embed">
                                         <a href="view_post_detail.php<?php echo '?id='.$id; ?>">
                                         <div style="height: 100; width: :100;">
                                             <?php 
@@ -135,48 +91,5 @@ require "header.php";
                     </li>
                     <?php 
                         }
+                    }
                     ?>
-                   </ul>
-            </div>
-            <!-- Activity List End -->
-        </div>
-
-        <!-- Load More Button End -->
-    </div>
-    <!-- Main Content End -->
-<script type='text/javascript'>
-function readURL(input) {
-if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        $('#blah')
-            .attr('src', e.target.result)
-            .width(500)
-            .height(200);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
-<script type="text/javascript">
-    $(document).ready( function() {
-      $('#searching').on('keyup', function() {
-        $.ajax({
-          type: 'POST',
-          url: 'search_post.php',
-          data: {
-            search: $(this).val()
-          },
-          cache: false,
-          success: function(data) {
-            $('#tampils').html(data);
-          }
-        });
-      });
-    });
-  </script>
-<?php
-require "footer.php";
-?>
